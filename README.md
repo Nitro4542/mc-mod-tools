@@ -11,4 +11,4 @@ I'm going to make a tool for that. For now, you'll have to do it manually.
 
 ## File format/structure explained
 
-As this is an alpha project, you can only create and read an info.txt at the moment. Later you can add mods.
+As this is an alpha project, you can only back up your existing mods at the moment. You'll be able to add mods later.

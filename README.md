@@ -5,10 +5,10 @@ I created this project for people who don't know how to install mods and for tho
 
 ## How does it work?
 
+As this is an alpha project, you can only back up your existing mods at the moment. You'll be able to add mods later.
+
 ## How do I create mod packs for it?
 
 I'm going to make a tool for that. For now, you'll have to do it manually.
 
 ## File format/structure explained
-
-As this is an alpha project, you can only back up your existing mods at the moment. You'll be able to add mods later.

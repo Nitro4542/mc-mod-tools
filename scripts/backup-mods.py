@@ -32,7 +32,7 @@ if config.get('Paths','default-backup-path') == "NOT_SET":
 else:
     final_destination = config.get('Paths','default-backup-path')+"\\"+"mod-backup-"+datetime.today().strftime('%Y-%m-%d')
 if os.path.isdir(final_destination) != True:
-        os.mkdir(final_destination)
+    os.mkdir(final_destination)
 
 # Set mod folder path
 if args.mc_directory != None:

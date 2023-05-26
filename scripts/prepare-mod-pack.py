@@ -35,9 +35,9 @@ if args.cache_folder == None:
 if args.cache_folder == None:
     if config.get('Paths','cache-folder') != "NOT_SET":
         if os.path.isdir(config.get('Paths','cache-folder')) == True:
-            final_destination = config.get('Paths','cache-folder') + "\\" + datetime.today().strftime('%Y-%m-%d') + "-" +randomword(5)
+            final_destination = config.get('Paths','cache-folder') + "\\" + datetime.today().strftime('%Y-%m-%d') + "_" +randomword(5)
 else:
-    final_destination = args.cache_folder + "\\" + datetime.today().strftime('%Y-%m-%d') + randomword(5)
+    final_destination = args.cache_folder + "\\" + datetime.today().strftime('%Y-%m-%d') + "_" +randomword(5)
 
 # Extract zip file
 with ZipFile(args.pack, 'r') as zipobject: 

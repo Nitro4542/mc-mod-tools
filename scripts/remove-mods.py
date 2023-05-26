@@ -10,7 +10,7 @@ config.read('config.ini')
 # Arguments
 parser = argparse.ArgumentParser(prog='nitro-mc-mod-remover',description='Instantly remove all of your Minecraft mods')
 parser.add_argument("-md", dest = "mc_directory", help="minecraft directory (will use path from config.ini if not given)", required=False, default=None)
-parser.add_argument("-s", dest = "silent", help = "use to skip confirmation prompt", required=False, default=False, action='store_true')
+parser.add_argument("-s", dest = "silent", help = "use to skip confirmation & backup prompt", required=False, default=False, action='store_true')
 args = parser.parse_args()
 
 # Check configuration
@@ -25,7 +25,9 @@ elif args.mc_directory == None:
             quit()
 
 # Set mod folder path
-if config.get('Paths','minecraft-mod-folder') != "default":
+if args.mc_directory != None:
+    folder = args.mc_directory
+elif config.get('Paths','minecraft-mod-folder') != "default":
     folder = config.get('Paths','minecraft-mod-folder')
 else:
     folder = os.getenv('APPDATA')+"\\.minecraft\\mods"
@@ -44,6 +46,15 @@ def delete_mods():
 
 # Define confirmation prompt
 def confirm_prompt():
+    answer0 = input("Do you want to create a backup of your existing mods? [Y|N]")
+    if answer0.lower() in ["y","yes"]:
+        os.system("python backup-mods.py")
+    elif answer0.lower() in ["n","no"]:
+        print('Won\'t create backup')
+    else:
+        print('Only \"y\" or \"n\" are allowed. Try again.')
+        confirm_prompt()
+
     answer = input("Continue? - All of your mods are beeing erased! [Y|N]: ")
     if answer.lower() in ["y","yes"]:
         delete_mods()

@@ -14,7 +14,7 @@ Use this to backup your existing mods.
 Syntax:  
 
 ```bash
-\$ python backup-mods.py <arguments>
+$ python backup-mods.py <arguments>
 ```
 
 The following arguments are allowed:  
@@ -28,7 +28,7 @@ Use this to install mods.
 Syntax:  
 
 ```bash
-\$ python install-mods.py <arguments>
+$ python install-mods.py <arguments>
 ```
 
 The following arguments are allowed:  
@@ -42,7 +42,7 @@ Use this to extract a mod pack.
 Syntax:  
 
 ```bash
-\$ python prepare-mod-pack.py <arguments>
+$ python prepare-mod-pack.py <arguments>
 ```
 
 The following arguments are allowed:  
@@ -56,7 +56,7 @@ Use this to remove all existing mods.
 Syntax:  
 
 ```bash
-\$ python remove-mods.py <arguments>
+$ python remove-mods.py <arguments>
 ```
 
 The following arguments are allowed:  

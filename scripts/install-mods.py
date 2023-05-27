@@ -23,16 +23,28 @@ if args.mc_directory == None:
             print("The minecraft mod folder path in the configuration isn't valid or doesn't exist.")
             quit()
 
+def install_mods(src):
 # Set mod and source mod pack folder path
-src = args.source
-if config.get('Paths','minecraft-mod-folder') != "default":
-    final_destination = config.get('Paths','minecraft-mod-folder')
-else:
-    final_destination = os.getenv('APPDATA')+"\\.minecraft\\mods"
+    if src == None:
+        if args.source != None:
+            src = args.source
+        else:
+            print('Error: Please provide a valid mod pack source.')
+            quit()
+    if os.path.isdir(src) != True:
+        print("The source path isn't valid or doesn't exist.")
+        quit()
+    if config.get('Paths','minecraft-mod-folder') != "default":
+        final_destination = config.get('Paths','minecraft-mod-folder')
+    else:
+        final_destination = os.getenv('APPDATA')+"\\.minecraft\\mods"
 
-# Copy all content of selected folder into mods folder
-src_files = os.listdir(src)
-for file_name in src_files:
-    full_file_name = os.path.join(src, file_name)
-    if os.path.isfile(full_file_name):
-        shutil.copy2(full_file_name, final_destination)
+# Copy all contents of selected folder into mods folder
+    src_files = os.listdir(src)
+    for file_name in src_files:
+        full_file_name = os.path.join(src, file_name)
+        if os.path.isfile(full_file_name):
+            shutil.copy2(full_file_name, final_destination)
+
+# Run install process
+install_mods(None)

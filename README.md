@@ -8,7 +8,7 @@ Please note that this tool is currently only available for Windows. I'll release
 
 For now, you'll need to use the scripts in your terminal.
 
-## backup-mods.py
+### backup-mods.py
 
 Use this to backup your existing mods.  
 Syntax:  
@@ -81,10 +81,10 @@ cache-folder = NOT_SET
 
 All explained:  
 `default-backup-path` is the path where all your backups will be stored.  
-`minecraft-mod-folder` is the mods folder inside your .minecraft folder. `default` goes to %appdata%\\.minecraft\mods.  
+`minecraft-mod-folder` is the mods folder inside your .minecraft folder. Defaults to %appdata%\\.minecraft\mods.  
 `cache-folder` is the folder where all your mod packs will be cached.  
   
-I would recommend that you configure all of this.
+I would recommend that you configure everything to your needs.
 
 ## File structure explained
 

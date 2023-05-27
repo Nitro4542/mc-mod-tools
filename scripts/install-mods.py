@@ -9,7 +9,7 @@ config.read('config.ini')
 
 # Arguments
 parser = argparse.ArgumentParser(prog='nitro-mc-mod-installer',description='Instantly install a whole Minecraft mod pack')
-parser.add_argument("-d", dest = "source", help="source folder path",required=True, default=None)
+parser.add_argument("-s", dest = "source", help="source folder path",required=True, default=None)
 parser.add_argument("-md", dest = "mc_directory", help="minecraft directory (will use path from config.ini if not given)", required=False, default=None)
 args = parser.parse_args()
 

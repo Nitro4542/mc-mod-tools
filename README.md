@@ -11,7 +11,12 @@ For now, you'll need to use the scripts in your terminal.
 ## backup-mods.py
 
 Use this to backup your existing mods.  
-Syntax: `python backup-mods.py <arguments>`  
+Syntax:  
+
+```bash
+python backup-mods.py <arguments>
+```
+
 The following arguments are allowed:  
 `-h` for help.  
 `-d <DESTINATION>` for the backup destination. If not specified, the path from the configuration will be used.  
@@ -20,7 +25,12 @@ The following arguments are allowed:
 ### install-mods.py
 
 Use this to install mods.  
-Syntax: `python install-mods.py <arguments>`  
+Syntax:  
+
+```bash
+python install-mods.py <arguments>
+```
+
 The following arguments are allowed:  
 `-h` for help.  
 `-s <SOURCE>` for the source folder. Everything in it will be copied. This is needed to run this command.  
@@ -29,7 +39,12 @@ The following arguments are allowed:
 ### prepare-mod-pack.py
 
 Use this to extract a mod pack.  
-Syntax: `python prepare-mod-pack.py <arguments>`  
+Syntax:  
+
+```bash
+python prepare-mod-pack.py <arguments>
+```
+
 The following arguments are allowed:  
 `-h` for help.  
 `-p <PACK>` for the zip file. If not specified, the path from the configuration will be used.  
@@ -38,7 +53,12 @@ The following arguments are allowed:
 ### remove-mods.py
 
 Use this to remove all existing mods.  
-Syntax: `python remove-mods.py <arguments>`  
+Syntax:  
+
+```bash
+python remove-mods.py <arguments>
+```
+
 The following arguments are allowed:  
 `-h` for help.  
 `-s` for silent mode. All prompts will be skipped and you won't be able to make a backup.

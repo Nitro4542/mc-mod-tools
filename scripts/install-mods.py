@@ -24,13 +24,9 @@ if args.mc_directory == None:
             quit()
 
 def install_mods(src):
-# Set mod and source mod pack folder path
+# Set + check mod and source folder path
     if src == None:
-        if args.source != None:
-            src = args.source
-        else:
-            print('Error: Please provide a valid mod pack source.')
-            quit()
+        src = args.source
     if os.path.isdir(src) != True:
         print("The source path isn't valid or doesn't exist.")
         quit()

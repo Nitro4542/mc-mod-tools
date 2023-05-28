@@ -77,12 +77,16 @@ Inside the config.ini file in the scripts folder you'll find the default configu
 default-backup-path = NOT_SET
 minecraft-mod-folder = default
 cache-folder = NOT_SET
+
+[General]
+operating-system = Windows
 ```
 
 All explained:  
 `default-backup-path` is the path where all your backups will be stored.  
 `minecraft-mod-folder` is the mods folder inside your .minecraft folder. Defaults to .minecraft/mods.  
 `cache-folder` is the folder where all your mod packs will be cached.  
+`operating-system` is your operating system. Set either to "Windows" or "Linux" (without quotation marks).  
   
 I would recommend that you configure everything to your needs.
 

@@ -1,6 +1,6 @@
 # About this project
 
-This is an installer for my Minecraft mod format.  
+This is a toolbox for my Minecraft mod format.  
 I created this project for people who don't know how to install mods, and for those who don't want to use a third party launcher and want a safe, ad-free and crap-free tool.  
 Please note that this tool is currently only available for Windows and Linux. I'll probably release it for MacOS later.
 

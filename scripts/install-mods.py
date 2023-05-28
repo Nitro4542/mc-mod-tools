@@ -37,7 +37,13 @@ def install_mods(src):
     if config.get('Paths','minecraft-mod-folder') != "default":
         final_destination = config.get('Paths','minecraft-mod-folder')
     else:
-        final_destination = os.getenv('APPDATA')+"\\.minecraft\\mods"
+        if config.get('General','operating-system') == "Windows":
+            final_destination = os.getenv('APPDATA')+"\\.minecraft\\mods"
+        elif config.get('General','operating-system') == "Linux":
+            final_destination = os.getenv('HOME')+"/.minecraft/mods"
+        else:
+            print('Please check your configuration at operating-system.')
+            quit()
 
 # Copy all contents of selected folder into mods folder
     src_files = os.listdir(src)

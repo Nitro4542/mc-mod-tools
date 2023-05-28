@@ -46,7 +46,13 @@ if args.mc_directory != None:
 elif config.get('Paths','minecraft-mod-folder') != "default":
     src1 = config.get('Paths','minecraft-mod-folder')
 else:
-    src1 = os.getenv('APPDATA')+"\\.minecraft\\mods"
+    if config.get('General','operating-system') == "Windows":
+        src1 = os.getenv('APPDATA')+"\\.minecraft\\mods"
+    elif config.get('General','operating-system') == "Linux":
+        src1 = os.getenv('HOME')+"/.minecraft/mods"
+    else:
+        print('Please check your configuration at operating-system.')
+        quit()
 
 # Copy all content of mods folder into backup destination
 def create_backup(src):

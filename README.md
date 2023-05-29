@@ -61,7 +61,7 @@ python remove-mods.py <arguments>
 
 The following arguments are allowed:  
 `-h` for help.  
-`-s` for silent mode. All prompts will be skipped and you won't be able to make a backup.
+`-s` for silent mode. All prompts will be skipped and you won't be able to make a backup.  
 `-md <MC_DIRECTORY>` for the mods folder inside .minecraft. If not specified, it will use the path specified in the configuration.  
 
 ## mc-mod-tools-lite.py

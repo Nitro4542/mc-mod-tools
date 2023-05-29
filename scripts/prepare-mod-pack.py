@@ -23,7 +23,11 @@ args = parser.parse_args()
 
 # Check configuration
 if args.cache_folder == None:
-    if config.get('Paths','cache-folder') == "NOT_SET":
+    if config.get('Paths','cache-folder') != "NOT_SET":
+        if os.path.isdir(config.get('Paths','cache-folder')) != True:
+            print("The cache path in the configuration isn't given.")
+            quit()
+    elif config.get('Paths','cache-folder') == "NOT_SET":
         print("The cache path in the configuration isn't given.")
         quit()
 

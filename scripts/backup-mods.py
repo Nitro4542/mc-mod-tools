@@ -26,6 +26,9 @@ if args.destination == None:
         if os.path.isdir(config.get('Paths','default-backup-path')) != True:
             print("The backup path in the configuration isn't valid or doesn't exist.")
             quit()
+    elif config.get('Paths','default-backup-path') == "NOT_SET":
+        print("The backup path in the configuration isn't given.")
+        quit()
     if config.get('Paths','minecraft-mod-folder') != "default":
         if os.path.isdir(config.get('Paths','minecraft-mod-folder')) != True:
             print("The minecraft mod folder path in the configuration isn't valid or doesn't exist.")

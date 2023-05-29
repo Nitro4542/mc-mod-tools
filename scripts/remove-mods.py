@@ -10,7 +10,7 @@ config.read('config.ini')
 # Arguments
 parser = argparse.ArgumentParser(prog='nitro-mc-mod-remover',description='Instantly remove all of your Minecraft mods')
 parser.add_argument("-md", dest = "mc_directory", help="minecraft directory (will use path from config.ini if not given)", required=False, default=None)
-parser.add_argument("-s", dest = "silent", help = "use to skip confirmation & backup prompt", required=False, default=False, action='store_true')
+parser.add_argument("-q", dest = "quiet", help = "use to skip confirmation & backup prompt", required=False, default=False, action='store_true')
 args = parser.parse_args()
 
 # Check configuration
@@ -71,7 +71,7 @@ def confirm_prompt():
         confirm_prompt()
 
 # Run confirmation if -s isn't used
-if args.silent == False:
+if args.quiet == False:
     confirm_prompt()
-elif args.silent == True:
+elif args.quiet == True:
     delete_mods()

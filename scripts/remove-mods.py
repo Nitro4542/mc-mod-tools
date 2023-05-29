@@ -16,7 +16,7 @@ args = parser.parse_args()
 # Check configuration
 if args.mc_directory != None:
     if os.path.isdir(args.mc_directory) != True:
-            print("The source path isn't valid or doesn't exist.")
+            print("The minecraft path isn't valid or doesn't exist.")
             quit()
 elif args.mc_directory == None:
     if config.get('Paths','minecraft-mod-folder') != "default":

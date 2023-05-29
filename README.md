@@ -64,6 +64,24 @@ The following arguments are allowed:
 `-s` for silent mode. All prompts will be skipped and you won't be able to make a backup.
 `-md <MC_DIRECTORY>` for the mods folder inside .minecraft. If not specified, it will use the path specified in the configuration.  
 
+## mc-mod-tools-lite.py
+
+This scripts contains all scripts in one script.
+Syntax:  
+
+```bash
+python mc-mod-tools.py <COMMAND> -d DESTINATION -md MC_DIRECTORY -p PACK -c CACHE_FOLDER -s SOURCE -q -h
+```
+
+The following arguments are allowed:  
+`-h` for help.  
+`-d DESTINATION` for the backup destination. If not specified, the path from the configuration will be used.  
+`-md MC_DIRECTORY` for the mods folder inside .minecraft. If not specified, it will use the path given in the configuration.  
+`-p PACK` for the zip file.  
+`-c <CACHE_FOLDER>` for the cache folder. If not specified, it will use the path given in the configuration.  
+`-s <SOURCE>` for the source folder. Everything in it will be copied. This is needed to run the install command.  
+`-q` for quiet mode. All prompts will be skipped and you won't be able to make a backup.  
+
 ## How do I create mod packs for it?
 
 I'm going to make a tool for that. For now, you'll have to do it manually.

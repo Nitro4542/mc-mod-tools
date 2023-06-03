@@ -12,7 +12,7 @@ config.read('config.ini')
 
 # Arguments
 parser = argparse.ArgumentParser(prog='nitro-mc-mod-tools',description='Toolbox for Nitro\'s Minecraft mod pack format')
-parser.add_argument('command', help="Select which command is going to be run", required=True, default=None)
+parser.add_argument('command', help="Select which command is going to be run", default=None)
 parser.add_argument("-d", dest = "destination", help="backup destination (will use path from config.ini if not given)", required=False, default=None)
 parser.add_argument("-md", dest = "mc_directory", help="minecraft directory (will use path from config.ini if not given)", required=False, default=None)
 parser.add_argument("-p", dest = "pack", help="path to mod pack", required=False, default=None)
@@ -61,9 +61,13 @@ if args.cache_folder == None:
     elif config.get('Paths','cache-folder') == "NOT_SET":
         print("The cache path in the configuration isn't given.")
         quit()
-if config.get('General','operating-system') != "Linux" or config.get('General','operating-system') != "Windows":
-    print('Please check your configuration at operating-system.')
-    quit()
+# @Nitro4542 pls fix
+#if config.get('General','operating-system') != "Windows":
+#    print('Please check your configuration at operating-system.')
+#    quit()
+#elif config.get('General','operating-system') != "Linux":
+#    print('Please check your configuration at operating-system.')
+#    quit()
 
 # Set mod folder path
 if args.mc_directory != None:

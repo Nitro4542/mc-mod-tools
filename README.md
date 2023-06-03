@@ -6,67 +6,11 @@ Please note that this tool is currently only available for Windows and Linux. I'
 
 ## How does it work?
 
-For now, you'll need to use the scripts in your terminal.
+For now, you'll need to use the script in your terminal.
 
-### backup-mods.py
+### mc-mod-tools.py
 
-Use this to backup your existing mods.  
-Syntax:  
-
-```bash
-python backup-mods.py <arguments>
-```
-
-The following arguments are allowed:  
-`-h` for help.  
-`-d <DESTINATION>` for the backup destination. If not specified, the path from the configuration will be used.  
-`-md <MC_DIRECTORY>` for the mods folder inside .minecraft. If not specified, it will use the path given in the configuration.  
-
-### install-mods.py
-
-Use this to install mods.  
-Syntax:  
-
-```bash
-python install-mods.py <arguments>
-```
-
-The following arguments are allowed:  
-`-h` for help.  
-`-s <SOURCE>` for the source folder. Everything in it will be copied. This is needed to run this command.  
-`-md <MC_DIRECTORY>` for the mods folder inside .minecraft. If not specified, it will use the path given in the configuration.  
-
-### prepare-mod-pack.py
-
-Use this to extract a mod pack.  
-Syntax:  
-
-```bash
-python prepare-mod-pack.py <arguments>
-```
-
-The following arguments are allowed:  
-`-h` for help.  
-`-p <PACK>` for the zip file. If not specified, the path from the configuration will be used.  
-`-c <CACHE_FOLDER>` for the cache folder. If not specified, it will use the path given in the configuration.  
-
-### remove-mods.py
-
-Use this to remove all existing mods.  
-Syntax:  
-
-```bash
-python remove-mods.py <arguments>
-```
-
-The following arguments are allowed:  
-`-h` for help.  
-`-s` for silent mode. All prompts will be skipped and you won't be able to make a backup.  
-`-md <MC_DIRECTORY>` for the mods folder inside .minecraft. If not specified, it will use the path specified in the configuration.  
-
-## mc-mod-tools-lite.py
-
-This scripts contains all scripts in one script.
+This script contains everything you need in a single script.  
 Syntax:  
 
 ```bash
@@ -76,15 +20,11 @@ python mc-mod-tools.py <COMMAND> -d DESTINATION -md MC_DIRECTORY -p PACK -c CACH
 The following arguments are allowed:  
 `-h` for help.  
 `-d DESTINATION` for the backup destination. If not specified, the path from the configuration will be used.  
-`-md MC_DIRECTORY` for the mods folder inside .minecraft. If not specified, it will use the path given in the configuration.  
+`-md MC_DIRECTORY` for the mods folder inside .minecraft. If not specified, the path from the configuration will be used.  
 `-p PACK` for the zip file.  
 `-c <CACHE_FOLDER>` for the cache folder. If not specified, it will use the path given in the configuration.  
 `-s <SOURCE>` for the source folder. Everything in it will be copied. This is needed to run the install command.  
-`-q` for quiet mode. All prompts will be skipped and you won't be able to make a backup.  
-
-## How do I create mod packs for it?
-
-I'm going to make a tool for that. For now, you'll have to do it manually.
+`-q` for silent mode. All prompts will be skipped and you won't be able to make a backup.
 
 ## Configuration
 
@@ -100,13 +40,17 @@ cache-folder = NOT_SET
 operating-system = Windows
 ```
 
-All explained:  
+Options explained:  
 `default-backup-path` is the path where all your backups will be stored.  
 `minecraft-mod-folder` is the mods folder inside your .minecraft folder. Defaults to .minecraft/mods.  
 `cache-folder` is the folder where all your mod packs will be cached.  
-`operating-system` is your operating system. Set either to "Windows" or "Linux" (without quotation marks).  
+`operating-system` is your operating system. Set it either to "Windows" or "Linux" (without the quotes).  
   
-I would recommend that you configure everything to your needs.
+I would recommend that you configure everything to suit your needs.  
+
+## How do I create mod packs for it?
+
+I'm going to make a tool for that. For now, you'll have to do it manually.
 
 ## File structure explained
 

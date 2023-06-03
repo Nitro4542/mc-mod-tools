@@ -26,7 +26,7 @@ The following arguments are allowed:
 `-s <SOURCE>` for the source folder. Everything in it will be copied. This is needed to run the install command.  
 `-q` for silent mode. All prompts will be skipped and you won't be able to make a backup.
 
-## Configuration
+### Configuration
 
 Inside the config.ini file in the scripts folder you'll find the default configuration:  
 
@@ -52,7 +52,7 @@ I would recommend that you configure everything to suit your needs.
 
 I'm going to make a tool for that. For now, you'll have to do it manually.
 
-## File structure explained
+## What does a mod pack consist of?
 
 Just put your mods inside the zip file.
 For now, please only include .jar files inside the zip file.

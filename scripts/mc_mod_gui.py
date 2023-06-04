@@ -84,7 +84,7 @@ class InstallZipView(GridLayout):  # Zip installer menu
         super().__init__(**kwargs)
 
 
-class InstallFolder(GridLayout):  # Folder installer menu
+class InstallFolderView(GridLayout):  # Folder installer menu
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -116,6 +116,16 @@ class MyApp(App):
         self.remove_view = RemoveView()
         screen = Screen(name='removeView')
         screen.add_widget(self.remove_view)
+        self.screen_manager.add_widget(screen)
+
+        self.install_zip_view = InstallZipView()
+        screen = Screen(name='installZipView')
+        screen.add_widget(self.install_zip_view)
+        self.screen_manager.add_widget(screen)
+
+        self.install_folder_view = InstallFolderView()
+        screen = Screen(name='installFolderView')
+        screen.add_widget(self.install_folder_view)
         self.screen_manager.add_widget(screen)
 
         return self.screen_manager

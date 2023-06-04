@@ -2,11 +2,12 @@
 
 This is a toolbox for my Minecraft mod format.  
 I created this project for people who don't know how to install mods, and for those who don't want to use a third party launcher and want a safe, ad-free and crap-free tool.  
-Please note that this tool is currently only available for Windows and Linux. I'll probably release it for MacOS later.
+Please note that this tool is currently only available for Windows and Linux. I'll probably release it for macOS later.
 
 ## How does it work?
 
-For now, you'll need to use the script in your terminal.
+For now, you'll need to use the script in your terminal.  
+**Please note: The GUI version doesn't work yet.**
 
 ### mc-mod-tools.py
 
@@ -23,8 +24,8 @@ The following arguments are allowed:
 `-md MC_DIRECTORY` for the mods folder inside .minecraft. If not specified, the path from the configuration will be used.  
 `-p PACK` for the zip file.  
 `-c <CACHE_FOLDER>` for the cache folder. If not specified, it will use the path given in the configuration.  
-`-s <SOURCE>` for the source folder. Everything in it will be copied. This is needed to run the install command.  
-`-q` for silent mode. All prompts will be skipped and you won't be able to make a backup.
+`-s <SOURCE>` for the source folder. Everything in it will be copied. This is needed to run the install-command.  
+`-q` for silent mode. All prompts will be skipped, but you won't be able to make a backup.
 
 ### Configuration
 

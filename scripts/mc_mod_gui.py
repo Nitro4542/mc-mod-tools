@@ -96,6 +96,7 @@ class RemoveView(GridLayout):  # remove menu
 
 class MyApp(App):
     def build(self):
+        self.title = 'mc-mod-gui'
         self.screen_manager = ScreenManager()
 
         self.main_view = MainView()

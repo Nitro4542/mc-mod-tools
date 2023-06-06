@@ -1,3 +1,4 @@
+from configparser import ConfigParser
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
@@ -5,6 +6,10 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.textinput import TextInput
+
+# Load configuration
+config = ConfigParser()
+config.read('config.ini')
 
 
 class MainView(GridLayout):  # main menu
@@ -19,7 +24,7 @@ class MainView(GridLayout):  # main menu
 
         self.add_widget(Image(source='assets/mc-mod-tools.png'))
 
-        self.version = Label(text='v0.0.4-alpha')
+        self.version = Label(text=config.get('DONT-TOUCH', 'version'))
         self.add_widget(self.version)
 
         self.button_actions = GridLayout(cols=4)
@@ -41,7 +46,7 @@ class MainView(GridLayout):  # main menu
         app.screen_manager.current = 'backupView'
 
     def install_button_behaviour(self, *args):
-        app.screen_manager.current = 'installchoiceView'
+        app.screen_manager.current = 'installChoiceView'
 
     def remove_button_behaviour(self, *args):
         app.screen_manager.current = 'removeView'
@@ -90,7 +95,7 @@ class InstallZipView(GridLayout):  # Zip installer menu
             'center_y': 0.5
         }
 
-        self.mytitle = Label(text='Install mods from ZIP', font_size=32)
+        self.mytitle = Label(text='Install mods from ZIP', font_size=32, bold=True)
         self.add_widget(self.mytitle)
 
         self.zippathinput = TextInput(multiline=False, size_hint=(0.1, 0.1))
@@ -111,8 +116,7 @@ class InstallZipView(GridLayout):  # Zip installer menu
         print('Install started.')
 
     def install_zip_cancel_button_behaviour(self, *args):
-        print('Install canceled.')
-        quit()
+        app.screen_manager.current = 'mainView'
 
 
 class InstallFolderView(GridLayout):  # Folder installer menu
@@ -125,7 +129,7 @@ class InstallFolderView(GridLayout):  # Folder installer menu
             'center_y': 0.5
         }
 
-        self.mytitle = Label(text='Install mods from folder', font_size=32)
+        self.mytitle = Label(text='Install mods from folder', font_size=32, bold=True)
         self.add_widget(self.mytitle)
 
         self.folderpathinput = TextInput(multiline=False, size_hint=(0.1, 0.1))
@@ -146,8 +150,7 @@ class InstallFolderView(GridLayout):  # Folder installer menu
         print('Install started.')
 
     def install_folder_cancel_button_behaviour(self, *args):
-        print('Install canceled.')
-        quit()
+        app.screen_manager.current = 'mainView'
 
 
 class RemoveView(GridLayout):  # remove menu
@@ -159,6 +162,29 @@ class RemoveView(GridLayout):  # remove menu
             'center_x': 0.5,
             'center_y': 0.5
         }
+
+        self.mytitle = Label(text='Remove mods', font_size=32, bold=True)
+        self.add_widget(self.mytitle)
+
+        self.mydescription = Label(text='This will remove all of your existing mods. Continue?', font_size=20)
+        self.add_widget(self.mydescription)
+
+        self.button_actions = GridLayout(cols=2, size_hint=(0.5, 0.5))
+        self.add_widget(self.button_actions)
+
+        self.remove_view_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')
+        self.remove_view_cancel_button.bind(on_press=self.remove_view_cancel_button_behaviour)
+        self.button_actions.add_widget(self.remove_view_cancel_button)
+
+        self.remove_view_start_button = Button(size_hint=(0.25, 0.25), text='Start')
+        self.remove_view_start_button.bind(on_press=self.remove_view_start_button_behaviour)
+        self.button_actions.add_widget(self.remove_view_start_button)
+
+    def remove_view_start_button_behaviour(self, *args):
+        print('Removal started.')
+
+    def remove_view_cancel_button_behaviour(self, *args):
+        app.screen_manager.current = 'mainView'
 
 
 class MyApp(App):
@@ -176,9 +202,9 @@ class MyApp(App):
         screen.add_widget(self.backup_view)
         self.screen_manager.add_widget(screen)
 
-        self.installchoice_view = InstallChoiceView()
-        screen = Screen(name='installchoiceView')
-        screen.add_widget(self.installchoice_view)
+        self.install_choice_view = InstallChoiceView()
+        screen = Screen(name='installChoiceView')
+        screen.add_widget(self.install_choice_view)
         self.screen_manager.add_widget(screen)
 
         self.remove_view = RemoveView()

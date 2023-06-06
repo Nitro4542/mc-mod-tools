@@ -93,17 +93,17 @@ class InstallZipView(GridLayout):  # Zip installer menu
         self.mytitle = Label(text='Install mods from ZIP', font_size=32)
         self.add_widget(self.mytitle)
 
-        self.zippathinput = TextInput(multiline=False, padding=(5, 5), size_hint=(0.6, 0.5))
+        self.zippathinput = TextInput(multiline=False, size_hint=(0.1, 0.1))
         self.add_widget(self.zippathinput)
 
-        self.button_actions = GridLayout(cols=2)
+        self.button_actions = GridLayout(cols=2, size_hint=(0.1, 0.1))
         self.add_widget(self.button_actions)
 
-        self.install_zip_cancel_button = Button(text='Cancel', size_hint=(0.25, 0.25), padding=(5, 5))
+        self.install_zip_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')
         self.install_zip_cancel_button.bind(on_press=self.install_zip_cancel_button_behaviour)
         self.button_actions.add_widget(self.install_zip_cancel_button)
 
-        self.install_zip_start_button = Button(text='Start', size_hint=(0.25, 0.25), padding=(5, 5))
+        self.install_zip_start_button = Button(size_hint=(0.25, 0.25), text='Start')
         self.install_zip_start_button.bind(on_press=self.install_zip_start_button_behaviour)
         self.button_actions.add_widget(self.install_zip_start_button)
 
@@ -128,17 +128,17 @@ class InstallFolderView(GridLayout):  # Folder installer menu
         self.mytitle = Label(text='Install mods from folder', font_size=32)
         self.add_widget(self.mytitle)
 
-        self.folderpathinput = TextInput(multiline=False, padding=(5, 5), size_hint=(0.6, 0.5))
+        self.folderpathinput = TextInput(multiline=False, size_hint=(0.1, 0.1))
         self.add_widget(self.folderpathinput)
 
-        self.button_actions = GridLayout(cols=2)
+        self.button_actions = GridLayout(cols=2, size_hint=(0.1, 0.1))
         self.add_widget(self.button_actions)
 
-        self.install_folder_cancel_button = Button(text='Cancel', size_hint=(0.25, 0.25), padding=(5, 5))
+        self.install_folder_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')
         self.install_folder_cancel_button.bind(on_press=self.install_folder_cancel_button_behaviour)
         self.button_actions.add_widget(self.install_folder_cancel_button)
 
-        self.install_folder_start_button = Button(text='Start', size_hint=(0.25, 0.25), padding=(5, 5))
+        self.install_folder_start_button = Button(size_hint=(0.25, 0.25), text='Start')
         self.install_folder_start_button.bind(on_press=self.install_folder_start_button_behaviour)
         self.button_actions.add_widget(self.install_folder_start_button)
 
@@ -148,6 +148,8 @@ class InstallFolderView(GridLayout):  # Folder installer menu
     def install_folder_cancel_button_behaviour(self, *args):
         print('Install canceled.')
         quit()
+
+
 class RemoveView(GridLayout):  # remove menu
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

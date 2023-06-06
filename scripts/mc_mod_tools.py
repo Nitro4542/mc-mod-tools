@@ -128,7 +128,7 @@ def cache_mod_pack(cache_dest):
 
 # Creates backup of your mods folder
 def create_backup():
-    # Get and add backup name to destination and create folder if neccessary
+    # Get and add backup name to destination and create folder if necessary
     if config.get('Paths', 'default-backup-path') == "NOT_SET":
         final_destination = args.destination + "\\" + "mod-backup-" + datetime.today().strftime(
             '%Y-%m-%d') + "_" + randomword(5)
@@ -169,7 +169,7 @@ def confirm_prompt():
     else:
         print('Only \"y\" or \"n\" are allowed. Try again.')
         confirm_prompt()
-    answer = input("Continue? - All of your mods are beeing erased! [Y|N]: ")
+    answer = input("Continue? - All of your mods are being erased! [Y|N]: ")
     if answer.lower() in ["y", "yes"]:
         delete_mods()
     elif answer.lower() in ["n", "no"]:

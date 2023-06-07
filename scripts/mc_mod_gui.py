@@ -55,6 +55,32 @@ class MainView(GridLayout):  # main menu
 class BackupView(GridLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.cols = 1
+        self.size_hint = (0.8, 0.8)
+        self.pos_hint = {
+            'center_x': 0.5,
+            'center_y': 0.5
+        }
+
+        self.mytitle = Label(text='Backup mods', font_size=32, bold=True)
+        self.add_widget(self.mytitle)
+
+        self.button_actions = GridLayout(cols=2, size_hint=(0.1, 0.1))
+        self.add_widget(self.button_actions)
+
+        self.backup_view_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')
+        self.backup_view_cancel_button.bind(on_press=self.backup_view_cancel_button_behaviour)
+        self.button_actions.add_widget(self.backup_view_cancel_button)
+
+        self.backup_view_start_button = Button(size_hint=(0.25, 0.25), text='Start')
+        self.backup_view_start_button.bind(on_press=self.backup_view_start_button_behaviour)
+        self.button_actions.add_widget(self.backup_view_start_button)
+
+    def backup_view_start_button_behaviour(self, *args):
+        print('Backup started.')
+
+    def backup_view_cancel_button_behaviour(self, *args):
+        app.screen_manager.current = 'mainView'
 
 
 class InstallChoiceView(GridLayout):  # install selection menu

@@ -1,4 +1,4 @@
-from configparser import ConfigParser
+#from configparser import ConfigParser
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
@@ -8,8 +8,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.textinput import TextInput
 
 # Load configuration
-config = ConfigParser()
-config.read('config.ini')
+#config = ConfigParser()
+#config.read('config.ini')
 
 
 class MainView(GridLayout):  # main menu
@@ -24,7 +24,7 @@ class MainView(GridLayout):  # main menu
 
         self.add_widget(Image(source='assets/mc-mod-tools.png'))
 
-        self.version = Label(text=config.get('DONT-TOUCH', 'version'))
+        self.version = Label(text='test/debug')
         self.add_widget(self.version)
 
         self.button_actions = GridLayout(cols=4)

@@ -11,7 +11,7 @@ For now, you'll need to use the script in your terminal.
 
 ### mc-mod-tools.py
 
-This script contains everything you need in a single script.  
+This script contains everything you need for the command line in a single script.  
 Syntax:  
 
 ```bash
@@ -57,3 +57,10 @@ I'm going to make a tool for that. For now, you'll have to do it manually.
 
 Just put your mods inside the zip file.
 For now, please only include .jar files inside the zip file.
+
+## Contributing
+
+When it comes to contributing to the project, the two main things you can do are reporting bugs and submitting pull requests.  
+
+I'm new to Python programming, so any kind of help is appreciated.  
+I'd also love to hear every of your ideas for this project.  

@@ -189,13 +189,10 @@ class RemoveView(GridLayout):  # remove menu
             'center_y': 0.5
         }
 
-        self.mytitle = Label(text='Remove mods', font_size=32, bold=True)
+        self.mytitle = Label(text='Remove all of your mods', font_size=32, bold=True)
         self.add_widget(self.mytitle)
 
-        self.mydescription = Label(text='This will remove all of your existing mods. Continue?', font_size=20)
-        self.add_widget(self.mydescription)
-
-        self.button_actions = GridLayout(cols=2, size_hint=(0.5, 0.5))
+        self.button_actions = GridLayout(cols=2, size_hint=(0.1, 0.1))
         self.add_widget(self.button_actions)
 
         self.remove_view_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')

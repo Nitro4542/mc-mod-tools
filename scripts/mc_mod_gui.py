@@ -1,15 +1,16 @@
-#from configparser import ConfigParser
+# from configparser import ConfigParser
+import mc_mod_tools
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.textinput import TextInput
+from kivy.uix.textinput import TextInput#
 
 # Load configuration
-#config = ConfigParser()
-#config.read('config.ini')
+# config = ConfigParser()
+# config.read('config.ini')
 
 
 class MainView(GridLayout):  # main menu
@@ -77,7 +78,7 @@ class BackupView(GridLayout):
         self.button_actions.add_widget(self.backup_view_start_button)
 
     def backup_view_start_button_behaviour(self, *args):
-        print('Backup started.')
+        mc_mod_tools.create_backup()
 
     def backup_view_cancel_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'
@@ -204,7 +205,7 @@ class RemoveView(GridLayout):  # remove menu
         self.button_actions.add_widget(self.remove_view_start_button)
 
     def remove_view_start_button_behaviour(self, *args):
-        print('Removal started.')
+        mc_mod_tools.delete_mods()
 
     def remove_view_cancel_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'

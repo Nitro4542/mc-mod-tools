@@ -12,9 +12,10 @@ config = ConfigParser()
 config.read('config.ini')
 
 # Arguments
-parser = argparse.ArgumentParser(prog='nitro-mc-mod-tools',
+parser = argparse.ArgumentParser(prog='nitro_mc_mod_tools',
                                  description='Toolbox for Nitro\'s Minecraft mod pack format')
-parser.add_argument('command', help="Select which command is going to be run", default=None)
+if __name__ == "__main__":
+    parser.add_argument('command', help="Select which command is going to be run", default=None)
 parser.add_argument("-d", dest="destination", help="backup destination (will use path from config.ini if not given)",
                     required=False, default=None)
 parser.add_argument("-md", dest="mc_directory", help="minecraft directory (will use path from config.ini if not given)",
@@ -27,22 +28,23 @@ parser.add_argument("-q", dest="quiet", help="use to skip confirmation & backup 
 args = parser.parse_args()
 
 # Check arguments
-if args.destination is not None:
-    if not os.path.isdir(args.destination):
-        print("The backup path given isn't valid or doesn't exist.")
-        quit()
-if args.mc_directory is not None:
-    if not os.path.isdir(args.mc_directory):
-        print("The backup path given isn't valid or doesn't exist.")
-        quit()
-if args.cache_folder is not None:
-    if not os.path.isdir(args.cache_folder):
-        print("The backup path given isn't valid or doesn't exist.")
-        quit()
-if args.source is not None:
-    if not os.path.isdir(args.source):
-        print("The backup path given isn't valid or doesn't exist.")
-        quit()
+if __name__ == "__main__":
+    if args.destination is not None:
+        if not os.path.isdir(args.destination):
+            print("The backup path given isn't valid or doesn't exist.")
+            quit()
+    if args.mc_directory is not None:
+        if not os.path.isdir(args.mc_directory):
+            print("The backup path given isn't valid or doesn't exist.")
+            quit()
+    if args.cache_folder is not None:
+        if not os.path.isdir(args.cache_folder):
+            print("The backup path given isn't valid or doesn't exist.")
+            quit()
+    if args.source is not None:
+        if not os.path.isdir(args.source):
+            print("The backup path given isn't valid or doesn't exist.")
+            quit()
 
 # Check configuration
 if args.destination is None:
@@ -66,6 +68,8 @@ if args.cache_folder is None:
     elif config.get('Paths', 'cache-folder') == "NOT_SET":
         print("The cache path in the configuration isn't given.")
         quit()
+
+
 # @Nitro4542 pls fix
 # if config.get('General','operating-system') != "Windows":
 #    print('Please check your configuration at operating-system.')
@@ -75,15 +79,17 @@ if args.cache_folder is None:
 #    quit()
 
 # Set mod folder path
-if args.mc_directory is not None:
-    mc_mod_folder = args.mc_directory
-elif config.get('Paths', 'minecraft-mod-folder') != "default":
-    mc_mod_folder = config.get('Paths', 'minecraft-mod-folder')
-else:
-    if config.get('General', 'operating-system') == "Windows":
-        mc_mod_folder = os.getenv('APPDATA') + "\\.minecraft\\mods"
-    elif config.get('General', 'operating-system') == "Linux":
-        mc_mod_folder = os.getenv('HOME') + "/.minecraft/mods"
+def set_mod_folder():
+    if args.mc_directory is not None:
+        mod_folder = args.mc_directory
+    elif config.get('Paths', 'minecraft-mod-folder') != "default":
+        mod_folder = config.get('Paths', 'minecraft-mod-folder')
+    else:
+        if config.get('General', 'operating-system') == "Windows":
+            mod_folder = os.getenv('APPDATA') + "\\.minecraft\\mods"
+        elif config.get('General', 'operating-system') == "Linux":
+            mc_mod_folder = os.getenv('HOME') + "/.minecraft/mods"
+    return mod_folder
 
 
 # Generates a random string
@@ -95,6 +101,7 @@ def randomword(length):
 
 # Function to cache your mod pack
 def cache_mod_pack(cache_dest):
+    mc_mod_folder = set_mod_folder()
     # Create folder for zip file + Check configuration
     if cache_dest is not None:
         if os.path.isdir(cache_dest):
@@ -127,9 +134,17 @@ def cache_mod_pack(cache_dest):
 
 
 # Creates backup of your mods folder
-def create_backup():
+def create_backup(backup_dest):
+    mc_mod_folder = set_mod_folder()
+    # Create folder for zip file + Check configuration
+    if backup_dest is not None:
+        if os.path.isdir(backup_dest):
+            final_destination = backup_dest + "\\" + datetime.today().strftime('%Y-%m-%d') + "_" + randomword(5)
+        else:
+            print("The backup path given isn't valid or doesn't exist.")
+            quit()
     # Get and add backup name to destination and create folder if necessary
-    if config.get('Paths', 'default-backup-path') == "NOT_SET":
+    elif config.get('Paths', 'default-backup-path') == "NOT_SET":
         final_destination = args.destination + "\\" + "mod-backup-" + datetime.today().strftime(
             '%Y-%m-%d') + "_" + randomword(5)
     else:
@@ -148,6 +163,7 @@ def create_backup():
 
 # Deletes all mods in mods folder
 def delete_mods():
+    mc_mod_folder = set_mod_folder()
     for filename in os.listdir(mc_mod_folder):
         file_path = os.path.join(mc_mod_folder, filename)
         try:
@@ -163,7 +179,7 @@ def delete_mods():
 def confirm_prompt():
     answer0 = input("Do you want to create a backup of your existing mods? [Y|N]")
     if answer0.lower() in ["y", "yes"]:
-        create_backup()
+        create_backup(None)
     elif answer0.lower() in ["n", "no"]:
         print('Won\'t create backup')
     else:
@@ -181,6 +197,7 @@ def confirm_prompt():
 
 # Copies mods in your mods folder
 def install_mods(src):
+    mc_mod_folder = set_mod_folder()
     # Set + check source folder path
     if src is None:
         src = args.source
@@ -196,14 +213,15 @@ def install_mods(src):
 
 
 # Run selected command
-if args.command == "prepare":
-    cache_mod_pack(None)
-elif args.command == "backup":
-    create_backup()
-elif args.command == "remove":
-    if args.silent:
-        delete_mods()
-    elif not args.silent:
-        confirm_prompt()
-elif args.command == "install":
-    install_mods(None)
+if __name__ == "__main__":
+    if args.command == "prepare":
+        cache_mod_pack(None)
+    elif args.command == "backup":
+        create_backup(None)
+    elif args.command == "remove":
+        if args.silent:
+            delete_mods()
+        elif not args.silent:
+            confirm_prompt()
+    elif args.command == "install":
+        install_mods(None)

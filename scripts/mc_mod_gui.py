@@ -6,12 +6,11 @@ from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.textinput import TextInput#
+from kivy.uix.textinput import TextInput  #
 
 # Load configuration
 # config = ConfigParser()
 # config.read('config.ini')
-
 
 class MainView(GridLayout):  # main menu
     def __init__(self, **kwargs):
@@ -78,7 +77,7 @@ class BackupView(GridLayout):
         self.button_actions.add_widget(self.backup_view_start_button)
 
     def backup_view_start_button_behaviour(self, *args):
-        mc_mod_tools.create_backup()
+        mc_mod_tools.create_backup(None)
 
     def backup_view_cancel_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'

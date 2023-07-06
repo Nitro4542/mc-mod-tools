@@ -8,6 +8,7 @@ from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.textinput import TextInput
 
+
 # Load configuration
 # config = ConfigParser()
 # config.read('config.ini')

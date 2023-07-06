@@ -88,7 +88,7 @@ def set_mod_folder():
         if config.get('General', 'operating-system') == "Windows":
             mod_folder = os.getenv('APPDATA') + "\\.minecraft\\mods"
         elif config.get('General', 'operating-system') == "Linux":
-            mc_mod_folder = os.getenv('HOME') + "/.minecraft/mods"
+            mod_folder = os.getenv('HOME') + "/.minecraft/mods"
     return mod_folder
 
 
@@ -96,7 +96,7 @@ def set_mod_folder():
 # Needed for some functions to work properly
 def randomword(length):
     letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for i in range(length))
+    return ''.join(random.choice(letters) for _ in range(length))
 
 
 # Function to cache your mod pack

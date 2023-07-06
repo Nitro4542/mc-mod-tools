@@ -127,9 +127,16 @@ def cache_mod_pack(cache_dest):
 
 
 # Creates backup of your mods folder
-def create_backup():
+def create_backup(backup_dest):
+    # Create folder for zip file + Check configuration
+    if backup_dest is not None:
+        if os.path.isdir(backup_dest):
+            final_destination = backup_dest + "\\" + datetime.today().strftime('%Y-%m-%d') + "_" + randomword(5)
+        else:
+            print("The backup path given isn't valid or doesn't exist.")
+            quit()
     # Get and add backup name to destination and create folder if necessary
-    if config.get('Paths', 'default-backup-path') == "NOT_SET":
+    elif config.get('Paths', 'default-backup-path') == "NOT_SET":
         final_destination = args.destination + "\\" + "mod-backup-" + datetime.today().strftime(
             '%Y-%m-%d') + "_" + randomword(5)
     else:
@@ -199,7 +206,7 @@ def install_mods(src):
 if args.command == "prepare":
     cache_mod_pack(None)
 elif args.command == "backup":
-    create_backup()
+    create_backup(None)
 elif args.command == "remove":
     if args.silent:
         delete_mods()

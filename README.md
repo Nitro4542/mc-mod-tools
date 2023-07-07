@@ -64,8 +64,8 @@ I'm going to make a tool for that. For now, you'll have to do it manually.
 
 ## What does a mod pack consist of?
 
-Just put your mods inside the zip file.
-For now, please only include .jar files inside the zip file.
+Just put your mods inside the zip file.  
+Note that anything you put in there will be sent straight to the mods folder.
 
 ## Contributing
 

@@ -140,7 +140,7 @@ class InstallZipView(GridLayout):  # Zip installer menu
         self.button_actions.add_widget(self.install_zip_start_button)
 
     def install_zip_start_button_behaviour(self, *args):
-        print('Install started.')
+        mc_mod_tools.install_mods_zip(self.zippathinput.text)
 
     def install_zip_cancel_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'
@@ -174,7 +174,7 @@ class InstallFolderView(GridLayout):  # Folder installer menu
         self.button_actions.add_widget(self.install_folder_start_button)
 
     def install_folder_start_button_behaviour(self, *args):
-        print('Install started.')
+        mc_mod_tools.install_mods(self.folderpathinput.text)
 
     def install_folder_cancel_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'

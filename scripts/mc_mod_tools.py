@@ -96,11 +96,11 @@ def set_mod_folder():
 # Needed for some functions to work properly
 def randomword(length):
     letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for _ in range(length))
+    return ''.join(random.choice(letters) for i in range(length))
 
 
 # Function to cache your mod pack
-def cache_mod_pack(cache_dest):
+def unzip_mod_pack(cache_dest, zipfile_path):
     mc_mod_folder = set_mod_folder()
     # Create folder for zip file + Check configuration
     if cache_dest is not None:
@@ -127,10 +127,17 @@ def cache_mod_pack(cache_dest):
         print('Error: Please provide a valid cache folder path.')
         quit()
     # Extract zip file
-    with ZipFile(args.pack, 'r') as zipobject:
-        zipobject.extractall(
-            path=final_destination)
-    zipobject.close()
+    if cache_dest is not None:
+        with ZipFile(zipfile_path, 'r') as zipobject:
+            zipobject.extractall(
+                path=final_destination)
+        zipobject.close()
+    elif args.cache_folder is not None:
+        with ZipFile(args.pack, 'r') as zipobject:
+            zipobject.extractall(
+                path=final_destination)
+        zipobject.close()
+    return final_destination
 
 
 # Creates backup of your mods folder
@@ -211,11 +218,18 @@ def install_mods(src):
         if os.path.isfile(full_file_name):
             shutil.copy2(full_file_name, mc_mod_folder)
 
+def install_mods_zip(zipfile_path):
+    mc_mod_folder = set_mod_folder()
+    # Extract zip file
+    with ZipFile(zipfile_path, 'r') as zipobject:
+        zipobject.extractall(
+            path=mc_mod_folder)
+    zipobject.close()
 
-# Run selected command
+# Run selected commands
 if __name__ == "__main__":
     if args.command == "prepare":
-        cache_mod_pack(None)
+        unzip_mod_pack(None, )
     elif args.command == "backup":
         create_backup(None)
     elif args.command == "remove":

@@ -6,10 +6,9 @@ Please note that this tool is currently only available for Windows and Linux. I'
 
 ## How does it work?
 
-For now, you'll need to use the script in your terminal.  
-**Please note: The GUI version doesn't work yet.**
+For now, you'll need to use the script in your terminal or the alpha GUI.
 
-### mc-mod-tools.py
+### mc_mod_tools.py
 
 This script contains everything you need for the command line in a single script.  
 Syntax:  
@@ -27,6 +26,12 @@ The following arguments are allowed:
 `-s <SOURCE>` for the source folder. Everything in it will be copied. This is needed to run the install-command.  
 `-q` for silent mode. All prompts will be skipped, but you won't be able to make a backup.
 
+### mc_mod_gui.py
+
+This the GUI of this app.  
+**Please note: The GUI still needs a lot of improvements as it isn't guaranteed to work.**  
+  
+The UI should be easy to understand for everyone.
 ### Configuration
 
 Inside the config.ini file in the scripts folder you'll find the default configuration:  
@@ -39,6 +44,9 @@ cache-folder = NOT_SET
 
 [General]
 operating-system = Windows
+
+[DONT-TOUCH]
+version = <VERSION>
 ```
 
 Options explained:  
@@ -46,8 +54,9 @@ Options explained:
 `minecraft-mod-folder` is the mods folder inside your .minecraft folder. Defaults to .minecraft/mods.  
 `cache-folder` is the folder where all your mod packs will be cached.  
 `operating-system` is your operating system. Set it either to "Windows" or "Linux" (without the quotes).  
+`version` is the version. It is recommended not to mess with it.
   
-I would recommend that you configure everything to suit your needs.  
+You need to configure everything for the application to work.
 
 ## How do I create mod packs for it?
 

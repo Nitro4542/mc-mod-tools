@@ -18,7 +18,7 @@ This script contains everything you need for the command line in a single script
 Syntax:  
 
 ```bash
-python mc-mod-tools.py <COMMAND> -d DESTINATION -md MC_DIRECTORY -p PACK -c CACHE_FOLDER -s SOURCE -q -h
+python mc_mod_tools.py <COMMAND> -d DESTINATION -md MC_DIRECTORY -p PACK -c CACHE_FOLDER -s SOURCE -q -h
 ```
 
 The following arguments are allowed:  

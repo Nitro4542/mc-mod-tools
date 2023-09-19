@@ -13,6 +13,7 @@ from kivy.uix.textinput import TextInput
 config = ConfigParser()
 config.read('config.ini')
 
+
 class MainView(GridLayout):  # main menu
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

@@ -79,6 +79,7 @@ class BackupView(GridLayout):
 
     def backup_view_start_button_behaviour(self, *args):
         mc_mod_tools.create_backup(None)
+        app.screen_manager.current = 'actionCompletedView'
 
     def backup_view_cancel_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'
@@ -141,6 +142,7 @@ class InstallZipView(GridLayout):  # Zip installer menu
 
     def install_zip_start_button_behaviour(self, *args):
         mc_mod_tools.install_mods_zip(self.zippathinput.text)
+        app.screen_manager.current = 'actionCompletedView'
 
     def install_zip_cancel_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'
@@ -175,6 +177,7 @@ class InstallFolderView(GridLayout):  # Folder installer menu
 
     def install_folder_start_button_behaviour(self, *args):
         mc_mod_tools.install_mods(self.folderpathinput.text)
+        app.screen_manager.current = 'actionCompletedView'
 
     def install_folder_cancel_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'
@@ -206,8 +209,33 @@ class RemoveView(GridLayout):  # remove menu
 
     def remove_view_start_button_behaviour(self, *args):
         mc_mod_tools.delete_mods()
+        app.screen_manager.current = 'actionCompletedView'
 
     def remove_view_cancel_button_behaviour(self, *args):
+        app.screen_manager.current = 'mainView'
+
+
+class ActionCompletedView(GridLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.cols = 1
+        self.size_hint = (0.8, 0.8)
+        self.pos_hint = {
+            'center_x': 0.5,
+            'center_y': 0.5
+        }
+
+        self.mytitle = Label(text='Action completed.', font_size=32, bold=True)
+        self.add_widget(self.mytitle)
+
+        self.button_actions = GridLayout(cols=2, size_hint=(0.1, 0.1))
+        self.add_widget(self.button_actions)
+
+        self.action_completed_submit_button = Button(size_hint=(0.25, 0.25), text='Submit')
+        self.action_completed_submit_button.bind(on_press=self.action_completed_submit_button_behaviour)
+        self.button_actions.add_widget(self.action_completed_submit_button)
+
+    def action_completed_submit_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'
 
 
@@ -244,6 +272,11 @@ class MyApp(App):
         self.install_folder_view = InstallFolderView()
         screen = Screen(name='installFolderView')
         screen.add_widget(self.install_folder_view)
+        self.screen_manager.add_widget(screen)
+
+        self.action_completed_view = ActionCompletedView()
+        screen = Screen(name='actionCompletedView')
+        screen.add_widget(self.action_completed_view)
         self.screen_manager.add_widget(screen)
 
         return self.screen_manager

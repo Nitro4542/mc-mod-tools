@@ -1,5 +1,6 @@
+"""A GUI for mc_mod_tools using Kivy"""
+# Import all necessary libraries
 from configparser import ConfigParser
-import mc_mod_tools
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
@@ -7,14 +8,15 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.textinput import TextInput
-
+import mc_mod_tools
 
 # Load configuration
 config = ConfigParser()
 config.read('config.ini')
 
 
-class MainView(GridLayout):  # main menu
+class MainView(GridLayout):
+    """Main menu"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
@@ -55,6 +57,7 @@ class MainView(GridLayout):  # main menu
 
 
 class BackupView(GridLayout):
+    """Backup menu"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
@@ -86,7 +89,8 @@ class BackupView(GridLayout):
         app.screen_manager.current = 'mainView'
 
 
-class InstallChoiceView(GridLayout):  # install selection menu
+class InstallChoiceView(GridLayout):
+    """Install selection menu: Select how to install your mod pack"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
@@ -114,7 +118,8 @@ class InstallChoiceView(GridLayout):  # install selection menu
         app.screen_manager.current = 'installFolderView'
 
 
-class InstallZipView(GridLayout):  # Zip installer menu
+class InstallZipView(GridLayout):
+    """Menu for installing mods from a zip file"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
@@ -149,7 +154,8 @@ class InstallZipView(GridLayout):  # Zip installer menu
         app.screen_manager.current = 'mainView'
 
 
-class InstallFolderView(GridLayout):  # Folder installer menu
+class InstallFolderView(GridLayout):
+    """Menu for installing mods from a folder"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
@@ -184,7 +190,8 @@ class InstallFolderView(GridLayout):  # Folder installer menu
         app.screen_manager.current = 'mainView'
 
 
-class RemoveView(GridLayout):  # remove menu
+class RemoveView(GridLayout):
+    """Menu for removing your mods"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
@@ -217,6 +224,7 @@ class RemoveView(GridLayout):  # remove menu
 
 
 class ActionCompletedView(GridLayout):
+    """What you'll see once you completed an action"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
@@ -233,14 +241,15 @@ class ActionCompletedView(GridLayout):
         self.add_widget(self.button_actions)
 
         self.action_completed_submit_button = Button(size_hint=(0.25, 0.25), text='Submit')
-        self.action_completed_submit_button.bind(on_press=self.action_completed_submit_button_behaviour)
+        self.action_completed_submit_button.bind(on_press=self.action_completed_button_behaviour)
         self.button_actions.add_widget(self.action_completed_submit_button)
 
-    def action_completed_submit_button_behaviour(self, *args):
+    def action_completed_button_behaviour(self, *args):
         app.screen_manager.current = 'mainView'
 
 
 class MyApp(App):
+    """Needed for ScreenManager"""
     def build(self):
         self.title = 'mc-mod-gui'
         self.screen_manager = ScreenManager()

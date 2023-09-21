@@ -1,4 +1,4 @@
-""" A module for copying, backing up and deleting your Minecraft mods. """
+"""A module for copying, backing up and deleting your Minecraft mods"""
 # Import needed libraries
 import argparse
 import os
@@ -230,7 +230,7 @@ def install_mods(src):
 
 
 def install_mods_zip(zipfile_path):
-    """Extracts a zip file containing mods to the mods folder."""
+    """Extracts a zip file containing mods to the mods folder"""
     mc_mod_folder = set_mod_folder()
     # Extract zip file
     with ZipFile(zipfile_path, 'r') as zipobject:

@@ -87,6 +87,9 @@ def get_backup_folder(backupfolder_input):
     """Sets backup folder"""
     if config.get('Paths', 'default-backup-path') == "default":
         backup_path = "Backups"
+        # Creates folder if it doesn't exist
+        if not os.path.isdir(backup_path):
+            os.mkdir(backup_path)
     else:
         if backupfolder_input is not None:
             backup_path = backupfolder_input
@@ -101,6 +104,9 @@ def get_cache_folder(cachefolder_input):
     """Sets cache folder"""
     if config.get('Paths', 'cache-folder') == "default":
         cache_path = "Cache"
+        # Creates folder if it doesn't exist
+        if not os.path.isdir(cache_path):
+            os.mkdir(cache_path)
     else:
         if cachefolder_input is not None:
             cache_path = cachefolder_input

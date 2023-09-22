@@ -6,17 +6,16 @@ Please note that this tool is currently only available for Windows and Linux. I'
 
 ## Installation
 
-Just copy all files inside the [scripts](scripts) folder to your computer and run the GUI version or start a terminal and use the terminal version.
-
-
-## How does it work?
-
-For now, you'll need to use the script in your terminal or the alpha GUI.  
+Just copy all files (including the entire assets folder) from the [scripts](scripts) folder to your computer and run the GUI version or start a terminal and use the terminal version.
 
 For the GUI to work, you need to install [Kivy](https://github.com/kivy/kivy) using pip like this:
 ```bash
 pip install kivy
 ```
+
+## How does it work?
+
+For now, you'll need to use the script in your terminal or the alpha GUI.  
 
 ### mc_mod_tools.py
 
@@ -39,7 +38,7 @@ The following arguments are allowed:
 ### mc_mod_gui.py
 
 This the GUI of this app.  
-**Please note: The GUI still needs a lot of improvements but it should work.**  
+**Please note: The GUI still needs improvements, but it should work.**  
   
 The UI should be easy to understand for everyone.
 ### Configuration
@@ -48,9 +47,9 @@ Inside the config.ini file in the scripts folder you'll find the default configu
 
 ```ini
 [Paths]
-default-backup-path = NOT_SET
+default-backup-path = default
 minecraft-mod-folder = default
-cache-folder = NOT_SET
+cache-folder = default
 
 [General]
 operating-system = Windows
@@ -60,13 +59,13 @@ version = <VERSION>
 ```
 
 Options explained:  
-`default-backup-path` is the path where all your backups will be stored.  
+`default-backup-path` is the path where all your backups will be stored. By default, it creates a folder where the script is placed, called "Backups".  
 `minecraft-mod-folder` is the mods folder inside your .minecraft folder. Defaults to .minecraft/mods.  
-`cache-folder` is the folder where all your mod packs will be cached.  
+`cache-folder` is the folder where all your unzipped mod packs will be placed and cached. By default, it creates a folder where the script is placed, called "Cache".  
 `operating-system` is your operating system. Set it either to "Windows" or "Linux" (without the quotes).  
 `version` is the version. It is recommended not to mess with it.
   
-You need to configure everything for the application to work.
+You don't need to configure everything for the application to work.
 
 ## How do I create mod packs for it?
 

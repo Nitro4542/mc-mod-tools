@@ -47,12 +47,15 @@ class MainView(GridLayout):
         self.button_actions.add_widget(self.remove_button)
 
     def backup_button_behaviour(self, *args):
+        """Switches view to backupView"""
         app.screen_manager.current = 'backupView'
 
     def install_button_behaviour(self, *args):
+        """Switches view to installChoiceView"""
         app.screen_manager.current = 'installChoiceView'
 
     def remove_button_behaviour(self, *args):
+        """Switches view to removeView"""
         app.screen_manager.current = 'removeView'
 
 
@@ -82,10 +85,12 @@ class BackupView(GridLayout):
         self.button_actions.add_widget(self.backup_view_start_button)
 
     def backup_view_start_button_behaviour(self, *args):
+        """Creates backup and switches view to actionCompletedView"""
         mc_mod_tools.create_backup(None)
         app.screen_manager.current = 'actionCompletedView'
 
     def backup_view_cancel_button_behaviour(self, *args):
+        """Switches view back to mainView"""
         app.screen_manager.current = 'mainView'
 
 
@@ -112,9 +117,11 @@ class InstallChoiceView(GridLayout):
         self.button_actions.add_widget(self.install_folder_button)
 
     def install_zip_button_behaviour(self, *args):
+        """Switches view to installZipView"""
         app.screen_manager.current = 'installZipView'
 
     def install_folder_button_behaviour(self, *args):
+        """Switches view to installFolderView"""
         app.screen_manager.current = 'installFolderView'
 
 
@@ -147,10 +154,12 @@ class InstallZipView(GridLayout):
         self.button_actions.add_widget(self.install_zip_start_button)
 
     def install_zip_start_button_behaviour(self, *args):
+        """Installs mods from zip file and switches view to actionCompletedView"""
         mc_mod_tools.install_mods_zip(self.zippathinput.text)
         app.screen_manager.current = 'actionCompletedView'
 
     def install_zip_cancel_button_behaviour(self, *args):
+        """Switches view to mainView"""
         app.screen_manager.current = 'mainView'
 
 
@@ -183,10 +192,12 @@ class InstallFolderView(GridLayout):
         self.button_actions.add_widget(self.install_folder_start_button)
 
     def install_folder_start_button_behaviour(self, *args):
+        """Installs mods from folder and switches view to actionCompletedView"""
         mc_mod_tools.install_mods(self.folderpathinput.text)
         app.screen_manager.current = 'actionCompletedView'
 
     def install_folder_cancel_button_behaviour(self, *args):
+        """Switches view to mainView"""
         app.screen_manager.current = 'mainView'
 
 
@@ -216,10 +227,12 @@ class RemoveView(GridLayout):
         self.button_actions.add_widget(self.remove_view_start_button)
 
     def remove_view_start_button_behaviour(self, *args):
+        """Deletes all mods and switches view to mainView"""
         mc_mod_tools.delete_mods()
         app.screen_manager.current = 'actionCompletedView'
 
     def remove_view_cancel_button_behaviour(self, *args):
+        """Switches view to mainView"""
         app.screen_manager.current = 'mainView'
 
 
@@ -245,6 +258,7 @@ class ActionCompletedView(GridLayout):
         self.button_actions.add_widget(self.action_completed_submit_button)
 
     def action_completed_button_behaviour(self, *args):
+        """Switches view to mainView"""
         app.screen_manager.current = 'mainView'
 
 
@@ -253,6 +267,7 @@ class MyApp(App):
     def build(self):
         self.title = 'mc-mod-gui'
         self.screen_manager = ScreenManager()
+        self.icon = 'assets/mc-mod-tools.ico'
 
         self.main_view = MainView()
         screen = Screen(name='mainView')

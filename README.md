@@ -6,7 +6,7 @@ Please note that this tool is currently only available for Windows and Linux. I'
 
 ## Installation
 
-Just copy all files inside the [scripts](scripts) folder to your computer and run the GUI version or start a terminal and use the terminal version.
+Just copy all files (including the entire assets folder) from the [scripts](scripts) folder to your computer and run the GUI version or start a terminal and use the terminal version.
 
 For the GUI to work, you need to install [Kivy](https://github.com/kivy/kivy) using pip like this:
 ```bash
@@ -38,7 +38,7 @@ The following arguments are allowed:
 ### mc_mod_gui.py
 
 This the GUI of this app.  
-**Please note: The GUI still needs a lot of improvements but it should work.**  
+**Please note: The GUI still needs improvements, but it should work.**  
   
 The UI should be easy to understand for everyone.
 ### Configuration

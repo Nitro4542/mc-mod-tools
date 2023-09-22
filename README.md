@@ -8,15 +8,14 @@ Please note that this tool is currently only available for Windows and Linux. I'
 
 Just copy all files inside the [scripts](scripts) folder to your computer and run the GUI version or start a terminal and use the terminal version.
 
-
-## How does it work?
-
-For now, you'll need to use the script in your terminal or the alpha GUI.  
-
 For the GUI to work, you need to install [Kivy](https://github.com/kivy/kivy) using pip like this:
 ```bash
 pip install kivy
 ```
+
+## How does it work?
+
+For now, you'll need to use the script in your terminal or the alpha GUI.  
 
 ### mc_mod_tools.py
 

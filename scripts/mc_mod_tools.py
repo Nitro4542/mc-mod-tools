@@ -252,3 +252,6 @@ if __name__ == "__main__":
             confirm_prompt()
     elif args.command == "install":
         install_mods(None)
+    else:
+        print('Please provide a valid command.')
+        sys.exit(2)

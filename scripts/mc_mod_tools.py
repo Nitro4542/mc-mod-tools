@@ -45,52 +45,52 @@ if __name__ == "__main__":
     if args.destination is not None:
         if not os.path.isdir(args.destination):
             print("The backup path given isn't valid or doesn't exist.")
-            sys.exit()
+            sys.exit(1)
     if args.mc_directory is not None:
         if not os.path.isdir(args.mc_directory):
             print("The backup path given isn't valid or doesn't exist.")
-            sys.exit()
+            sys.exit(1)
     if args.cache_folder is not None:
         if not os.path.isdir(args.cache_folder):
             print("The backup path given isn't valid or doesn't exist.")
-            sys.exit()
+            sys.exit(1)
     if args.source is not None:
         if not os.path.isdir(args.source):
             print("The backup path given isn't valid or doesn't exist.")
-            sys.exit()
+            sys.exit(1)
 
 # Check configuration
 if args.destination is None:
     if config.get('Paths', 'default-backup-path') != "NOT_SET":
         if not os.path.isdir(config.get('Paths', 'default-backup-path')):
             print("The backup path in the configuration isn't valid or doesn't exist.")
-            sys.exit()
+            sys.exit(1)
     elif config.get('Paths', 'default-backup-path') == "NOT_SET":
         print("The backup path in the configuration isn't given.")
-        sys.exit()
+        sys.exit(1)
 if args.mc_directory is None:
     if config.get('Paths', 'minecraft-mod-folder') != "default":
         if not os.path.isdir(config.get('Paths', 'minecraft-mod-folder')):
             print(
                 "The minecraft mod folder path in the configuration isn't valid or doesn't exist.")
-            sys.exit()
+            sys.exit(1)
 if args.cache_folder is None:
     if config.get('Paths', 'cache-folder') != "NOT_SET":
         if not os.path.isdir(config.get('Paths', 'cache-folder')):
             print("The cache path in the configuration isn't given.")
-            sys.exit()
+            sys.exit(1)
     elif config.get('Paths', 'cache-folder') == "NOT_SET":
         print("The cache path in the configuration isn't given.")
-        sys.exit()
+        sys.exit(1)
 
 
 # @Nitro4542 pls fix
 # if config.get('General','operating-system') != "Windows":
 #    print('Please check your configuration at operating-system.')
-#    sys.exit()
+#    sys.exit(1)
 # elif config.get('General','operating-system') != "Linux":
 #    print('Please check your configuration at operating-system.')
-#    sys.exit()
+#    sys.exit(1)
 
 
 def set_mod_folder():
@@ -131,10 +131,10 @@ def unzip_mod_pack(cache_dest, zipfile_path):
                 '%Y-%m-%d') + "_" + randomword(5)
         else:
             print("The cache path isn't valid or doesn't exist.")
-            sys.exit()
+            sys.exit(1)
     else:
         print('Error: Please provide a valid cache folder path.')
-        sys.exit()
+        sys.exit(1)
     # Extract zip file
     if cache_dest is not None:
         with ZipFile(zipfile_path, 'r') as zipobject:
@@ -159,7 +159,7 @@ def create_backup(backup_dest):
                                  randomword(5))
         else:
             print("The backup path given isn't valid or doesn't exist.")
-            sys.exit()
+            sys.exit(1)
     # Get and add backup name to destination and create folder if necessary
     elif config.get('Paths', 'default-backup-path') == "NOT_SET":
         final_destination = args.destination + "\\" + "mod-backup-" + datetime.today().strftime(
@@ -206,7 +206,7 @@ def confirm_prompt():
     if answer.lower() in ["y", "yes"]:
         delete_mods()
     elif answer.lower() in ["n", "no"]:
-        sys.exit()
+        sys.exit(0)
     else:
         print('Only \"y\" or \"n\" are allowed. Try again.')
         confirm_prompt()
@@ -220,7 +220,7 @@ def install_mods(src):
         src = args.source
     if not os.path.isdir(src):
         print("The source path isn't valid or doesn't exist.")
-        sys.exit()
+        sys.exit(1)
     # Copies all contents of selected folder in mods folder
     src_files = os.listdir(src)
     for file_name in src_files:

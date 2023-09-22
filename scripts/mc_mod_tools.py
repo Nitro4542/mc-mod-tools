@@ -1,4 +1,4 @@
-"""A module for copying, backing up and deleting your Minecraft mods"""
+"""A module for managing your Minecraft mods"""
 # Import needed libraries
 import argparse
 import os

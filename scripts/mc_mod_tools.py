@@ -69,7 +69,7 @@ def get_mod_folder(modfolder_input):
     """Sets mod folder path"""
     if modfolder_input is not None:
         mod_folder = modfolder_input
-    elif args.mc_directory is not None:
+    elif __name__ == "__main__" and args.mc_directory is not None:
         mod_folder = args.mc_directory
     elif config.get('Paths', 'minecraft-mod-folder') != "default":
         mod_folder = config.get('Paths', 'minecraft-mod-folder')
@@ -91,7 +91,7 @@ def get_backup_folder(backupfolder_input):
     else:
         if backupfolder_input is not None:
             backup_path = backupfolder_input
-        elif args.destination is not None:
+        elif __name__ == "__main__" and args.destination is not None:
             backup_path = args.destination
         elif config.get('Paths', 'default-backup-path') != "default":
             backup_path = config.get('Paths', 'default-backup-path')
@@ -108,7 +108,7 @@ def get_cache_folder(cachefolder_input):
     else:
         if cachefolder_input is not None:
             cache_path = cachefolder_input
-        elif args.cache_folder is not None:
+        elif __name__ == "__main__" and args.cache_folder is not None:
             cache_path = args.cache_folder
         elif config.get('Paths', 'cache_folder') != "default":
             cache_path = config.get('Paths', 'cache_folder')

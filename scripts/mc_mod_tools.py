@@ -14,34 +14,32 @@ from zipfile import ZipFile
 config = ConfigParser()
 config.read('config.ini')
 
-# Arguments
-parser = argparse.ArgumentParser(prog='nitro_mc_mod_tools',
-                                 description='Toolbox for Nitro\'s Minecraft mod pack format')
+# Set arguments when the file runs as a script, but not when it's imported as a module
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(prog='nitro_mc_mod_tools',
+                                     description='Toolbox for Nitro\'s Minecraft mod pack format')
     parser.add_argument('command',
                         help="Select which command is going to be run", default=None)
-parser.add_argument("-d", dest="destination",
-                    help="backup destination (will use path from config.ini if not given)",
-                    required=False, default=None)
-parser.add_argument("-md", dest="mc_directory",
-                    help="minecraft directory (will use path from config.ini if not given)",
-                    required=False, default=None)
-parser.add_argument("-p", dest="pack",
-                    help="path to mod pack",
-                    required=False, default=None)
-parser.add_argument("-c", dest="cache_folder",
-                    help="cache folder",
-                    required=False, default=None)
-parser.add_argument("-s", dest="source",
-                    help="source folder path",
-                    required=False, default=None)
-parser.add_argument("-q", dest="quiet",
-                    help="use to skip confirmation & backup prompt",
-                    required=False, default=False, action='store_true')
-args = parser.parse_args()
-
-# Check arguments
-if __name__ == "__main__":
+    parser.add_argument("-d", dest="destination",
+                        help="backup destination (will use path from config.ini if not given)",
+                        required=False, default=None)
+    parser.add_argument("-md", dest="mc_directory",
+                        help="minecraft directory (will use path from config.ini if not given)",
+                        required=False, default=None)
+    parser.add_argument("-p", dest="pack",
+                        help="path to mod pack",
+                        required=False, default=None)
+    parser.add_argument("-c", dest="cache_folder",
+                        help="cache folder",
+                        required=False, default=None)
+    parser.add_argument("-s", dest="source",
+                        help="source folder path",
+                        required=False, default=None)
+    parser.add_argument("-q", dest="quiet",
+                        help="use to skip confirmation & backup prompt",
+                        required=False, default=False, action='store_true')
+    args = parser.parse_args()
+    # Check arguments if set
     if args.destination is not None:
         if not os.path.isdir(args.destination):
             print("The backup path given isn't valid or doesn't exist.")
@@ -205,7 +203,7 @@ def confirmation_prompt():
 def install_mods(src):
     """Copies mods in your mods folder"""
     mc_mod_folder = get_mod_folder(None)
-    # Set + check source folder path
+    # Set + check the source folder path
     if src is None:
         src = args.source
     if not os.path.isdir(src):
@@ -251,7 +249,7 @@ if (config.get('General', 'operating-system') != "Windows" and
     print('Please check your configuration at operating-system.')
     sys.exit(1)
 
-# Run selected commands
+# Run selected command when the file runs as a script, but not when it's imported as a module
 if __name__ == "__main__":
     if args.command == "prepare":
         unzip_mod_pack(None, None)

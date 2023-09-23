@@ -1,6 +1,7 @@
 """A GUI for mc_mod_tools using Kivy"""
 # Import all necessary libraries
 from configparser import ConfigParser
+from kivy.config import Config
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
@@ -11,8 +12,11 @@ from kivy.uix.textinput import TextInput
 import mc_mod_tools
 
 # Load configuration
-config = ConfigParser()
-config.read('config.ini')
+config_file = ConfigParser()
+config_file.read('config.ini')
+
+# Disable multitouch emulation in Kivy
+Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
 
 class MainView(GridLayout):
@@ -28,7 +32,7 @@ class MainView(GridLayout):
 
         self.add_widget(Image(source='assets/mc-mod-tools.png'))
 
-        self.version = Label(text=config.get('DONT-TOUCH', 'version'))
+        self.version = Label(text=config_file.get('DONT-TOUCH', 'version'))
         self.add_widget(self.version)
 
         self.button_actions = GridLayout(cols=4)

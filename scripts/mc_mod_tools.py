@@ -228,22 +228,19 @@ def install_mods_zip(zipfile_path):
 
 
 # Check config.ini
-if args.destination is None:
-    if config.get('Paths', 'default-backup-path') != "default":
-        if not os.path.isdir(config.get('Paths', 'default-backup-path')):
-            print("The backup path in the configuration isn't valid or doesn't exist.")
-            sys.exit(1)
-if args.mc_directory is None:
-    if config.get('Paths', 'minecraft-mod-folder') != "default":
-        if not os.path.isdir(config.get('Paths', 'minecraft-mod-folder')):
-            print(
-                "The minecraft mod folder path in the configuration isn't valid or doesn't exist.")
-            sys.exit(1)
-if args.cache_folder is None:
-    if config.get('Paths', 'cache-folder') != "default":
-        if not os.path.isdir(config.get('Paths', 'cache-folder')):
-            print("The cache path in the configuration isn't given.")
-            sys.exit(1)
+if config.get('Paths', 'default-backup-path') != "default":
+    if not os.path.isdir(config.get('Paths', 'default-backup-path')):
+        print("The backup path in the configuration isn't valid or doesn't exist.")
+        sys.exit(1)
+if config.get('Paths', 'minecraft-mod-folder') != "default":
+    if not os.path.isdir(config.get('Paths', 'minecraft-mod-folder')):
+        print(
+            "The minecraft mod folder path in the configuration isn't valid or doesn't exist.")
+        sys.exit(1)
+if config.get('Paths', 'cache-folder') != "default":
+    if not os.path.isdir(config.get('Paths', 'cache-folder')):
+        print("The cache path in the configuration isn't given.")
+        sys.exit(1)
 if (config.get('General', 'operating-system') != "Windows" and
         config.get('General', 'operating-system') != "Linux"):
     print('Please check your configuration at operating-system.')

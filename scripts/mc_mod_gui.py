@@ -99,7 +99,7 @@ class BackupView(GridLayout):
 
 
 class InstallChoiceView(GridLayout):
-    """Install selection menu: Select how to install your mod pack"""
+    """Install-selection menu: Select how to install your mod pack"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1

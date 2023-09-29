@@ -14,34 +14,32 @@ from zipfile import ZipFile
 config = ConfigParser()
 config.read('config.ini')
 
-# Arguments
-parser = argparse.ArgumentParser(prog='nitro_mc_mod_tools',
-                                 description='Toolbox for Nitro\'s Minecraft mod pack format')
+# Set arguments when the file runs as a script, but not when it's imported as a module
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(prog='nitro_mc_mod_tools',
+                                     description='Toolbox for Nitro\'s Minecraft mod pack format')
     parser.add_argument('command',
                         help="Select which command is going to be run", default=None)
-parser.add_argument("-d", dest="destination",
-                    help="backup destination (will use path from config.ini if not given)",
-                    required=False, default=None)
-parser.add_argument("-md", dest="mc_directory",
-                    help="minecraft directory (will use path from config.ini if not given)",
-                    required=False, default=None)
-parser.add_argument("-p", dest="pack",
-                    help="path to mod pack",
-                    required=False, default=None)
-parser.add_argument("-c", dest="cache_folder",
-                    help="cache folder",
-                    required=False, default=None)
-parser.add_argument("-s", dest="source",
-                    help="source folder path",
-                    required=False, default=None)
-parser.add_argument("-q", dest="quiet",
-                    help="use to skip confirmation & backup prompt",
-                    required=False, default=False, action='store_true')
-args = parser.parse_args()
-
-# Check arguments
-if __name__ == "__main__":
+    parser.add_argument("-d", dest="destination",
+                        help="backup destination (will use path from config.ini if not given)",
+                        required=False, default=None)
+    parser.add_argument("-md", dest="mc_directory",
+                        help="minecraft directory (will use path from config.ini if not given)",
+                        required=False, default=None)
+    parser.add_argument("-p", dest="pack",
+                        help="path to mod pack",
+                        required=False, default=None)
+    parser.add_argument("-c", dest="cache_folder",
+                        help="cache folder",
+                        required=False, default=None)
+    parser.add_argument("-s", dest="source",
+                        help="source folder path",
+                        required=False, default=None)
+    parser.add_argument("-q", dest="quiet",
+                        help="use to skip confirmation & backup prompt",
+                        required=False, default=False, action='store_true')
+    args = parser.parse_args()
+    # Check arguments if set
     if args.destination is not None:
         if not os.path.isdir(args.destination):
             print("The backup path given isn't valid or doesn't exist.")
@@ -71,7 +69,7 @@ def get_mod_folder(modfolder_input):
     """Sets mod folder path"""
     if modfolder_input is not None:
         mod_folder = modfolder_input
-    elif args.mc_directory is not None:
+    elif __name__ == "__main__" and args.mc_directory is not None:
         mod_folder = args.mc_directory
     elif config.get('Paths', 'minecraft-mod-folder') != "default":
         mod_folder = config.get('Paths', 'minecraft-mod-folder')
@@ -93,7 +91,7 @@ def get_backup_folder(backupfolder_input):
     else:
         if backupfolder_input is not None:
             backup_path = backupfolder_input
-        elif args.destination is not None:
+        elif __name__ == "__main__" and args.destination is not None:
             backup_path = args.destination
         elif config.get('Paths', 'default-backup-path') != "default":
             backup_path = config.get('Paths', 'default-backup-path')
@@ -110,7 +108,7 @@ def get_cache_folder(cachefolder_input):
     else:
         if cachefolder_input is not None:
             cache_path = cachefolder_input
-        elif args.cache_folder is not None:
+        elif __name__ == "__main__" and args.cache_folder is not None:
             cache_path = args.cache_folder
         elif config.get('Paths', 'cache_folder') != "default":
             cache_path = config.get('Paths', 'cache_folder')
@@ -205,7 +203,7 @@ def confirmation_prompt():
 def install_mods(src):
     """Copies mods in your mods folder"""
     mc_mod_folder = get_mod_folder(None)
-    # Set + check source folder path
+    # Set + check the source folder path
     if src is None:
         src = args.source
     if not os.path.isdir(src):
@@ -230,28 +228,25 @@ def install_mods_zip(zipfile_path):
 
 
 # Check config.ini
-if args.destination is None:
-    if config.get('Paths', 'default-backup-path') != "default":
-        if not os.path.isdir(config.get('Paths', 'default-backup-path')):
-            print("The backup path in the configuration isn't valid or doesn't exist.")
-            sys.exit(1)
-if args.mc_directory is None:
-    if config.get('Paths', 'minecraft-mod-folder') != "default":
-        if not os.path.isdir(config.get('Paths', 'minecraft-mod-folder')):
-            print(
-                "The minecraft mod folder path in the configuration isn't valid or doesn't exist.")
-            sys.exit(1)
-if args.cache_folder is None:
-    if config.get('Paths', 'cache-folder') != "default":
-        if not os.path.isdir(config.get('Paths', 'cache-folder')):
-            print("The cache path in the configuration isn't given.")
-            sys.exit(1)
+if config.get('Paths', 'default-backup-path') != "default":
+    if not os.path.isdir(config.get('Paths', 'default-backup-path')):
+        print("The backup path in the configuration isn't valid or doesn't exist.")
+        sys.exit(1)
+if config.get('Paths', 'minecraft-mod-folder') != "default":
+    if not os.path.isdir(config.get('Paths', 'minecraft-mod-folder')):
+        print(
+            "The minecraft mod folder path in the configuration isn't valid or doesn't exist.")
+        sys.exit(1)
+if config.get('Paths', 'cache-folder') != "default":
+    if not os.path.isdir(config.get('Paths', 'cache-folder')):
+        print("The cache path in the configuration isn't given.")
+        sys.exit(1)
 if (config.get('General', 'operating-system') != "Windows" and
         config.get('General', 'operating-system') != "Linux"):
     print('Please check your configuration at operating-system.')
     sys.exit(1)
 
-# Run selected commands
+# Run selected command when the file runs as a script, but not when it's imported as a module
 if __name__ == "__main__":
     if args.command == "prepare":
         unzip_mod_pack(None, None)

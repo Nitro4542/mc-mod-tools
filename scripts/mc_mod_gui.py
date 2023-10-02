@@ -1,4 +1,4 @@
-"""A GUI for mc_mod_tools using Kivy"""
+"""A GUI for tools using Kivy"""
 # Import all necessary libraries
 from configparser import ConfigParser
 from kivy.config import Config
@@ -9,7 +9,10 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.textinput import TextInput
-import mc_mod_tools
+from mc_mod_tools import ModTools
+
+# Create an instance of ModTools class
+tools = ModTools()
 
 # Load configuration
 config_file = ConfigParser()
@@ -90,7 +93,7 @@ class BackupView(GridLayout):
 
     def backup_view_start_button_behaviour(self, *args):
         """Creates backup and switches view to actionCompletedView"""
-        mc_mod_tools.create_backup(None)
+        tools.create_backup(None)
         app.screen_manager.current = 'actionCompletedView'
 
     def backup_view_cancel_button_behaviour(self, *args):
@@ -159,7 +162,7 @@ class InstallZipView(GridLayout):
 
     def install_zip_start_button_behaviour(self, *args):
         """Installs mods from zip file and switches view to actionCompletedView"""
-        mc_mod_tools.install_mods_zip(self.zippathinput.text)
+        tools.install_mods_zip(self.zippathinput.text)
         app.screen_manager.current = 'actionCompletedView'
 
     def install_zip_cancel_button_behaviour(self, *args):
@@ -197,7 +200,7 @@ class InstallFolderView(GridLayout):
 
     def install_folder_start_button_behaviour(self, *args):
         """Installs mods from folder and switches view to actionCompletedView"""
-        mc_mod_tools.install_mods(self.folderpathinput.text)
+        tools.install_mods(self.folderpathinput.text)
         app.screen_manager.current = 'actionCompletedView'
 
     def install_folder_cancel_button_behaviour(self, *args):
@@ -232,7 +235,7 @@ class RemoveView(GridLayout):
 
     def remove_view_start_button_behaviour(self, *args):
         """Deletes all mods and switches view to mainView"""
-        mc_mod_tools.delete_mods()
+        tools.delete_mods()
         app.screen_manager.current = 'actionCompletedView'
 
     def remove_view_cancel_button_behaviour(self, *args):

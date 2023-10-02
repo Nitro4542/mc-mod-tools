@@ -245,7 +245,8 @@ class ModTools:
             sys.exit(1)
 
     def main(self):
-        """Run command from args when the file runs as a script, but not when it's imported as a module"""
+        """Run command from args when the file runs as a script,
+        but not when it's imported as a module"""
         if __name__ == "__main__":
             if self.args.command == "prepare":
                 self.unzip_mod_pack(None, None)

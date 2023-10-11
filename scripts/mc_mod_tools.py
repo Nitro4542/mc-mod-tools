@@ -164,7 +164,7 @@ class ModTools:
         src_files = os.listdir(mc_mod_folder)
         for file_name in src_files:
             full_file_name = os.path.join(mc_mod_folder, file_name)
-            if os.path.isfile(full_file_name):
+            if os.path.isfile(full_file_name) and file_name.endswith('.jar'):
                 shutil.copy2(full_file_name, final_destination)
 
     def delete_mods(self):
@@ -212,7 +212,7 @@ class ModTools:
         src_files = os.listdir(src)
         for file_name in src_files:
             full_file_name = os.path.join(src, file_name)
-            if os.path.isfile(full_file_name):
+            if os.path.isfile(full_file_name) and file_name.endswith('.jar'):
                 shutil.copy2(full_file_name, mc_mod_folder)
 
     def install_mods_zip(self, zipfile_path):
@@ -220,8 +220,9 @@ class ModTools:
         mc_mod_folder = self.get_mod_folder(None)
         # Extract zip file
         with ZipFile(zipfile_path, 'r') as zipobject:
-            zipobject.extractall(
-                path=mc_mod_folder)
+            for file_info in zipobject.infolist():
+                if file_info.filename.endswith('.jar'):
+                    zipobject.extract(file_info, path=mc_mod_folder)
         zipobject.close()
 
     def check_config(self):

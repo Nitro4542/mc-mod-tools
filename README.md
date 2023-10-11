@@ -1,32 +1,36 @@
-# About this project
+<p align="center">
+  <img width="500" alt="logo" src="scripts/assets/mc-mod-tools.png">
+</p>
+
+# mc-mod-tools
 
 This is a toolbox for my Minecraft mod format.  
 I created this project for people who don't know how to install mods, and for those who don't want to use a third party launcher and want a safe, ad-free and crap-free tool.  
-Please note that this tool is currently only available for Windows and Linux. I'll probably release it for macOS later.
+Please note that this tool is currently only available for Windows and Linux. I will probably release it for macOS later.
 
 ## Installation
 
-Just copy all files (including the entire assets folder) from the [scripts](scripts) folder to your computer and run the GUI version or start a terminal and use the terminal version.
+Just download all files (including the entire assets folder) from the [scripts](scripts) folder to your computer and run the GUI version or use the terminal version.
 
-For the GUI to work, you need to install [Kivy](https://github.com/kivy/kivy) using pip like this:
+For the GUI to work, you need to install [Kivy](https://pypi.org/project/Kivy/):
 ```bash
 pip install kivy
 ```
 
 ## How does it work?
 
-For now, you'll need to use the script in your terminal or the alpha GUI.  
+For now, you need to use the script in your terminal or the GUI.  
 
 ### mc_mod_tools.py
 
-This script contains everything you need for the command line in a single script.  
+This script contains everything you need to run it inside a terminal. The GUI is based on this script.  
 Syntax:  
 
 ```bash
 python mc_mod_tools.py <COMMAND> -d DESTINATION -md MC_DIRECTORY -p PACK -c CACHE_FOLDER -s SOURCE -q -h
 ```
 
-The following arguments are allowed:  
+The following arguments can be used:  
 `-h` for help.  
 `-d DESTINATION` for the backup destination. If not specified, the path from the configuration will be used.  
 `-md MC_DIRECTORY` for the mods folder inside .minecraft. If not specified, the path from the configuration will be used.  
@@ -38,9 +42,9 @@ The following arguments are allowed:
 ### mc_mod_gui.py
 
 This the GUI of this app.  
-**Please note: The GUI still needs improvements, but it should work.**  
   
-The UI should be easy to understand for everyone.
+The GUI should be easy to understand for everyone.
+
 ### Configuration
 
 Inside the config.ini file in the scripts folder you'll find the default configuration:  
@@ -71,10 +75,10 @@ You don't need to configure everything for the application to work.
 
 I'm going to make a tool for that. For now, you'll have to do it manually.
 
-## What does a mod pack consist of?
+### What does a mod pack consist of?
 
-Just put your mods inside the zip file.  
-Note that anything you put in there will be sent straight to the mods folder.
+Just put your mods **and nothing else** inside the zip file.  
+This means no extra files and folders.  
 
 ## Contributing
 

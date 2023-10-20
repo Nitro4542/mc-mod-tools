@@ -1,4 +1,4 @@
-"""A GUI for tools using Kivy"""
+"""A GUI for mc_mod_tools using Kivy"""
 # Import all necessary libraries
 from configparser import ConfigParser
 from kivy.config import Config

@@ -1,16 +1,17 @@
 <p align="center">
-  <img width="500" alt="logo" src="scripts/assets/mc-mod-tools.png">
+  <img width="192" height="192" alt="logo" src="scripts/assets/mc-mod-tools.png">
+  <h1>mc-mod-tools</h1>
+  <p>A tool to manage your Minecraft mods</p>
 </p>
 
-# mc-mod-tools
+## About
 
-This is a toolbox for my Minecraft mod format.  
-I created this project for people who don't know how to install mods, and for those who don't want to use a third party launcher and want a safe, ad-free and crap-free tool.  
-Please note that this tool is currently only available for Windows and Linux. I will probably release it for macOS later.
+I created this project for people who don't know how to install mods, and for those who don't want to use a third party launcher or those who want a safe, ad-free and crap-free tool.  
+Please note that this tool is currently only available for Windows and Linux. I will release it for macOS later.
 
 ## Installation
 
-Just download all files (including the entire assets folder) from the [scripts](scripts) folder to your computer and run the GUI version or use the terminal version.
+Just download all files (including the entire assets folder) from the [scripts](scripts) folder and run the GUI version or use the terminal version.
 
 For the GUI to work, you need to install [Kivy](https://pypi.org/project/Kivy/):
 ```bash
@@ -47,7 +48,7 @@ The GUI should be easy to understand for everyone.
 
 ### Configuration
 
-Inside the config.ini file in the scripts folder you'll find the default configuration:  
+Inside the config.ini file in the scripts folder you will find the default configuration:  
 
 ```ini
 [Paths]
@@ -63,26 +64,26 @@ version = <VERSION>
 ```
 
 Options explained:  
-`default-backup-path` is the path where all your backups will be stored. By default, it creates a folder where the script is placed, called "Backups".  
+`default-backup-path` is the path where all your backups will be stored. By default, it creates a folder inside the folder, where the script is placed, called "Backups".  
 `minecraft-mod-folder` is the mods folder inside your .minecraft folder. Defaults to .minecraft/mods.  
-`cache-folder` is the folder where all your unzipped mod packs will be placed and cached. By default, it creates a folder where the script is placed, called "Cache".  
+`cache-folder` is the folder where all your unzipped mod packs will be placed and cached. By default, it creates a folder inside the folder, where the script is placed, called "Cache".  
 `operating-system` is your operating system. Set it either to "Windows" or "Linux" (without the quotes).  
-`version` is the version. It is recommended not to mess with it.
+`version` tells the program the version number. It is recommended to not mess with it.
   
-You don't need to configure everything for the application to work.
+If you want to, you can change everything to your needs.
 
 ## How do I create mod packs for it?
 
-I'm going to make a tool for that. For now, you'll have to do it manually.
+I'm going to make a tool for that. For now, you have to do it manually.
 
 ### What does a mod pack consist of?
 
 Just put your mods **and nothing else** inside the zip file.  
-This means no extra files and folders.  
+This means no extra files or folders.  
 
 ## Contributing
 
 When it comes to contributing to the project, the two main things you can do are reporting bugs and submitting pull requests.  
 
 I'm new to Python programming, so any kind of help is appreciated.  
-I'd also love to hear every of your ideas for this project.  
+I'd also love to hear every single one of your ideas for this project.  

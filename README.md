@@ -1,11 +1,12 @@
 <p align="center">
-  <img width="500" alt="logo" src="scripts/assets/mc-mod-tools.png">
+  <img width="192" height="192" alt="logo" src="scripts/assets/mc-mod-tools.png">
+  <h1>mc-mod-tools</h1>
+  <p>A tool to manage your Minecraft mods</p>
 </p>
 
-# mc-mod-tools
+## About
 
-This is a toolbox for my Minecraft mod format.  
-I created this project for people who don't know how to install mods, and for those who don't want to use a third party launcher and want a safe, ad-free and crap-free tool.  
+I created this project for people who don't know how to install mods, and for those who don't want to use a third party launcher or those who want a safe, ad-free and crap-free tool.  
 Please note that this tool is currently only available for Windows and Linux. I will release it for macOS later.
 
 ## Installation

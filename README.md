@@ -1,8 +1,8 @@
-<p align="center">
+<div align="center">
   <img width="192" height="192" alt="logo" src="scripts/assets/mc-mod-tools.png">
   <h1>mc-mod-tools</h1>
   <p>A tool to manage your Minecraft mods</p>
-</p>
+</div>
 
 ## About
 

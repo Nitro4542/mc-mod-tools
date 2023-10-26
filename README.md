@@ -42,8 +42,6 @@ The following arguments can be used:
 
 ### mc_mod_gui.py
 
-This the GUI of this app.  
-  
 The GUI should be easy to understand for everyone.
 
 ### Configuration

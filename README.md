@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="192" height="192" alt="logo" src="scripts/assets/mc-mod-tools.png">
+  <img width="192" height="192" alt="logo" src="assets/mc-mod-tools.png">
   <h1>mc-mod-tools</h1>
   <p>A tool to manage your Minecraft mods</p>
 </div>
@@ -11,7 +11,7 @@ Please note that this tool is currently only available for Windows and Linux. I 
 
 ## Installation
 
-Just download all files (including the entire assets folder) from the [scripts](scripts) folder and run the GUI version or use the terminal version.
+Download the scripts.zip file from the [latest release](https://github.com/Nitro4542/mc-mod-tools/releases) and run the GUI version or use the terminal version.
 
 For the GUI to work, you need to install [Kivy](https://pypi.org/project/Kivy/):
 ```bash
@@ -42,8 +42,6 @@ The following arguments can be used:
 
 ### mc_mod_gui.py
 
-This the GUI of this app.  
-  
 The GUI should be easy to understand for everyone.
 
 ### Configuration
@@ -78,7 +76,7 @@ I'm going to make a tool for that. For now, you have to do it manually.
 
 ### What does a mod pack consist of?
 
-Just put your mods **and nothing else** inside the zip file.  
+Put your mods **and nothing else** inside the zip file.  
 This means no extra files or folders.  
 
 ## Contributing

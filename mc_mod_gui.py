@@ -274,7 +274,7 @@ class MyApp(App):
     def build(self):
         self.title = 'mc-mod-gui'
         self.screen_manager = ScreenManager()
-        self.icon = 'assets/mc-mod-tools.ico'
+        self.icon = 'assets/mc-mod-tools.png'
 
         self.main_view = MainView()
         screen = Screen(name='mainView')

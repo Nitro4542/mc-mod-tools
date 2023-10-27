@@ -11,7 +11,7 @@ Please note that this tool is currently only available for Windows and Linux. I 
 
 ## Installation
 
-Download the scripts.zip file from the [latest release](https://github.com/Nitro4542/mc-mod-tools/releases) and run the GUI version or use the terminal version.
+Download the mc-mod-tools.zip file from the [latest release](https://github.com/Nitro4542/mc-mod-tools/releases) and run the GUI version or use the terminal version.
 
 For the GUI to work, you need to install the requirements from the [requirements.txt](requirements.txt) file:
 ```bash

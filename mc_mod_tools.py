@@ -11,8 +11,7 @@ from zipfile import ZipFile
 
 
 def randomword(length):
-    """Generates a random string
-    Needed for some functions to work properly"""
+    """Generates a random string"""
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for _ in range(length))
 
@@ -72,7 +71,7 @@ class ModTools:
                     sys.exit(1)
 
     def get_mod_folder(self, modfolder_input):
-        """Sets mod folder path"""
+        """Sets the mod folder path"""
         if modfolder_input is not None:
             mod_folder = modfolder_input
         elif __name__ == "__main__" and self.args.mc_directory is not None:
@@ -87,7 +86,7 @@ class ModTools:
         return mod_folder
 
     def get_backup_folder(self, backupfolder_input):
-        """Sets backup folder"""
+        """Sets the backup folder path"""
         if self.config.get('Paths', 'default-backup-path') == "default":
             backup_path = "Backups"
             # Creates folder if it doesn't exist
@@ -103,7 +102,7 @@ class ModTools:
         return backup_path
 
     def get_cache_folder(self, cachefolder_input):
-        """Sets cache folder"""
+        """Sets the cache folder path"""
         if self.config.get('Paths', 'cache-folder') == "default":
             cache_path = "Cache"
             # Creates folder if it doesn't exist
@@ -119,7 +118,7 @@ class ModTools:
         return cache_path
 
     def unzip_mod_pack(self, cache_dest, zipfile_path):
-        """Function to unzip your mod pack"""
+        """Function to unzip a mod pack"""
         # Create folder for zip file + Check configuration
         if cache_dest is not None:
             if os.path.isdir(cache_dest):
@@ -144,7 +143,7 @@ class ModTools:
         return final_destination
 
     def create_backup(self, backup_dest):
-        """Creates a backup of your mods folder"""
+        """Creates a backup of mods folder"""
         mc_mod_folder = self.get_mod_folder(None)
         # Create folder for backup
         if backup_dest is not None:
@@ -200,7 +199,7 @@ class ModTools:
             self.confirmation_prompt()
 
     def install_mods(self, src):
-        """Copies mods in your mods folder"""
+        """Copies mods to your mods folder"""
         mc_mod_folder = self.get_mod_folder(None)
         # Set + check the source folder path
         if src is None:
@@ -226,7 +225,7 @@ class ModTools:
         zipobject.close()
 
     def check_config(self):
-        """Checks config.ini"""
+        """Checks config.ini for any errors"""
         if self.config.get('Paths', 'default-backup-path') != "default":
             if not os.path.isdir(self.config.get('Paths', 'default-backup-path')):
                 print("The backup path in the configuration isn't valid or doesn't exist.")
@@ -246,7 +245,7 @@ class ModTools:
             sys.exit(1)
 
     def main(self):
-        """Run command from args when the file runs as a script,
+        """Main function when the file runs as a script,
         but not when it's imported as a module"""
         if __name__ == "__main__":
             if self.args.command == "prepare":
@@ -265,7 +264,7 @@ class ModTools:
                 sys.exit(2)
 
 
-# Create an instance of the ModTools class and run the selected command
+# Create an instance of the ModTools class and run the main function
 if __name__ == "__main__":
     tools = ModTools()
     tools.main()

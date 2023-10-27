@@ -22,6 +22,12 @@ config_file.read('config.ini')
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
 
+# Define function to reduce unnecessary lines of code
+def return_to_main_menu():
+    """Switches view to mainView"""
+    app.screen_manager.current = 'mainView'
+
+
 class MainView(GridLayout):
     """Main menu"""
     def __init__(self, **kwargs):
@@ -84,7 +90,7 @@ class BackupView(GridLayout):
         self.add_widget(self.button_actions)
 
         self.backup_view_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')
-        self.backup_view_cancel_button.bind(on_press=self.backup_view_cancel_button_behaviour)
+        self.backup_view_cancel_button.bind(on_press=return_to_main_menu())
         self.button_actions.add_widget(self.backup_view_cancel_button)
 
         self.backup_view_start_button = Button(size_hint=(0.25, 0.25), text='Start')
@@ -96,13 +102,9 @@ class BackupView(GridLayout):
         tools.create_backup(None)
         app.screen_manager.current = 'actionCompletedView'
 
-    def backup_view_cancel_button_behaviour(self, *args):
-        """Switches view back to mainView"""
-        app.screen_manager.current = 'mainView'
-
 
 class InstallChoiceView(GridLayout):
-    """Install-selection menu: Select how to install your mod pack"""
+    """Install-selection menu"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cols = 1
@@ -153,7 +155,7 @@ class InstallZipView(GridLayout):
         self.add_widget(self.button_actions)
 
         self.install_zip_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')
-        self.install_zip_cancel_button.bind(on_press=self.install_zip_cancel_button_behaviour)
+        self.install_zip_cancel_button.bind(on_press=return_to_main_menu())
         self.button_actions.add_widget(self.install_zip_cancel_button)
 
         self.install_zip_start_button = Button(size_hint=(0.25, 0.25), text='Start')
@@ -164,10 +166,6 @@ class InstallZipView(GridLayout):
         """Installs mods from zip file and switches view to actionCompletedView"""
         tools.install_mods_zip(self.zippathinput.text)
         app.screen_manager.current = 'actionCompletedView'
-
-    def install_zip_cancel_button_behaviour(self, *args):
-        """Switches view to mainView"""
-        app.screen_manager.current = 'mainView'
 
 
 class InstallFolderView(GridLayout):
@@ -191,7 +189,7 @@ class InstallFolderView(GridLayout):
         self.add_widget(self.button_actions)
 
         self.install_folder_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')
-        self.install_folder_cancel_button.bind(on_press=self.install_folder_cancel_button_behaviour)
+        self.install_folder_cancel_button.bind(on_press=return_to_main_menu())
         self.button_actions.add_widget(self.install_folder_cancel_button)
 
         self.install_folder_start_button = Button(size_hint=(0.25, 0.25), text='Start')
@@ -202,10 +200,6 @@ class InstallFolderView(GridLayout):
         """Installs mods from folder and switches view to actionCompletedView"""
         tools.install_mods(self.folderpathinput.text)
         app.screen_manager.current = 'actionCompletedView'
-
-    def install_folder_cancel_button_behaviour(self, *args):
-        """Switches view to mainView"""
-        app.screen_manager.current = 'mainView'
 
 
 class RemoveView(GridLayout):
@@ -226,7 +220,7 @@ class RemoveView(GridLayout):
         self.add_widget(self.button_actions)
 
         self.remove_view_cancel_button = Button(size_hint=(0.25, 0.25), text='Cancel')
-        self.remove_view_cancel_button.bind(on_press=self.remove_view_cancel_button_behaviour)
+        self.remove_view_cancel_button.bind(on_press=return_to_main_menu())
         self.button_actions.add_widget(self.remove_view_cancel_button)
 
         self.remove_view_start_button = Button(size_hint=(0.25, 0.25), text='Start')
@@ -237,10 +231,6 @@ class RemoveView(GridLayout):
         """Deletes all mods and switches view to mainView"""
         tools.delete_mods()
         app.screen_manager.current = 'actionCompletedView'
-
-    def remove_view_cancel_button_behaviour(self, *args):
-        """Switches view to mainView"""
-        app.screen_manager.current = 'mainView'
 
 
 class ActionCompletedView(GridLayout):
@@ -261,12 +251,8 @@ class ActionCompletedView(GridLayout):
         self.add_widget(self.button_actions)
 
         self.action_completed_submit_button = Button(size_hint=(0.25, 0.25), text='Submit')
-        self.action_completed_submit_button.bind(on_press=self.action_completed_button_behaviour)
+        self.action_completed_submit_button.bind(on_press=return_to_main_menu())
         self.button_actions.add_widget(self.action_completed_submit_button)
-
-    def action_completed_button_behaviour(self, *args):
-        """Switches view to mainView"""
-        app.screen_manager.current = 'mainView'
 
 
 class MyApp(App):

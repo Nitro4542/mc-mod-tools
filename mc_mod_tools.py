@@ -83,6 +83,8 @@ class ModTools:
                 mod_folder = os.getenv('APPDATA') + "\\.minecraft\\mods"
             elif self.config.get('General', 'operating-system') == "Linux":
                 mod_folder = os.getenv('HOME') + "/.minecraft/mods"
+            elif self.config.get('General', 'operating-system') == "macOS":
+                mod_folder = os.path.expanduser("~") + "/Library/Application Support/minecraft"
         return mod_folder
 
     def get_backup_folder(self, backupfolder_input):

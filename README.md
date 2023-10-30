@@ -7,7 +7,7 @@
 ## About
 
 I created this project for people who don't know how to install mods, and for those who don't want to use a third party launcher or those who want a safe, ad-free and crap-free tool.  
-Please note that this tool is currently only available for Windows and Linux. I will release it for macOS later.
+Please note that this tool is currently only available for Windows and Linux and macOS.
 
 ## Installation
 
@@ -65,7 +65,7 @@ Options explained:
 `default-backup-path` is the path where all your backups will be stored. By default, it creates a folder inside the folder, where the script is placed, called "Backups".  
 `minecraft-mod-folder` is the mods folder inside your .minecraft folder. Defaults to .minecraft/mods.  
 `cache-folder` is the folder where all your unzipped mod packs will be placed and cached. By default, it creates a folder inside the folder, where the script is placed, called "Cache".  
-`operating-system` is your operating system. Set it either to "Windows" or "Linux" (without the quotes).  
+`operating-system` is your operating system. Set it either to "Windows" or "Linux" or "macOS" (without the quotes).  
 `version` tells the program the version number. It is recommended to not mess with it.
   
 If you want to, you can change everything to your needs.
